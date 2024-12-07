@@ -11,7 +11,7 @@ vxai is a V module that provides support for [xAI API](https://docs.x.ai/api)
 
 ## Installation
 
-To use vbech32 in your V project, you can install it via VPM:
+To use vxai in your V project, you can install it via VPM:
 
 ```
 v install ismyhc.vxai

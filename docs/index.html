@@ -1,105 +1,162 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>vxai | vdoc</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap"
-			rel="stylesheet"
-		/>
-		<link
-			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-		<link rel="manifest" href="site.webmanifest" />
-		<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
-		<meta name="msapplication-TileColor" content="#da532c" />
-		<meta name="theme-color" content="#ffffff" />
-		<link rel="stylesheet" href="doc.css" />
-		<link rel="stylesheet" href="normalize.css" />
-		<script src="dark-mode.js"></script>
-	</head>
 
-	<body>
-		<div><a id="skip-to-content-link" href="#main-content">Skip to content</a></div>
-		<div id="page">
-			<header class="doc-nav hidden">
-				<div class="heading-container">
-					<div class="heading">
-						<div class="info">
-							<div class="module">vxai</div>
-							<div class="toggle-version-container">
-								<span>0.1.0 6160945</span>
-								<div
-									id="dark-mode-toggle"
-									role="switch"
-									aria-checked="false"
-									aria-label="Toggle dark mode"
-								>
-									<svg xmlns="http://www.w3.org/2000/svg" class="light-icon" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"/></svg>
-<svg xmlns="http://www.w3.org/2000/svg" class="dark-icon" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M11.1,12.08C8.77,7.57,10.6,3.6,11.63,2.01C6.27,2.2,1.98,6.59,1.98,12c0,0.14,0.02,0.28,0.02,0.42 C2.62,12.15,3.29,12,4,12c1.66,0,3.18,0.83,4.1,2.15C9.77,14.63,11,16.17,11,18c0,1.52-0.87,2.83-2.12,3.51 c0.98,0.32,2.03,0.5,3.11,0.5c3.5,0,6.58-1.8,8.37-4.52C18,17.72,13.38,16.52,11.1,12.08z"/></g><path d="M7,16l-0.18,0C6.4,14.84,5.3,14,4,14c-1.66,0-3,1.34-3,3s1.34,3,3,3c0.62,0,2.49,0,3,0c1.1,0,2-0.9,2-2 C9,16.9,8.1,16,7,16z"/></g></g></svg>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>vxai | vdoc</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+	<link rel="manifest" href="site.webmanifest" />
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+	<meta name="msapplication-TileColor" content="#da532c" />
+	<meta name="theme-color" content="#ffffff" />
+	<link rel="stylesheet" href="doc.css" />
+	<link rel="stylesheet" href="normalize.css" />
+	<script src="dark-mode.js"></script>
+</head>
 
-								</div>
+<body>
+	<div><a id="skip-to-content-link" href="#main-content">Skip to content</a></div>
+	<div id="page">
+		<header class="doc-nav hidden">
+			<div class="heading-container">
+				<div class="heading">
+					<div class="info">
+						<div class="module">vxai</div>
+						<div class="toggle-version-container">
+							<span>0.1.0 6160945</span>
+							<div id="dark-mode-toggle" role="switch" aria-checked="false" aria-label="Toggle dark mode">
+								<svg xmlns="http://www.w3.org/2000/svg" class="light-icon" height="24"
+									viewBox="0 0 24 24" width="24">
+									<path d="M0 0h24v24H0z" fill="none" />
+									<path
+										d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z" />
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" class="dark-icon"
+									enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24">
+									<g>
+										<rect fill="none" height="24" width="24" />
+									</g>
+									<g>
+										<g>
+											<g>
+												<path
+													d="M11.1,12.08C8.77,7.57,10.6,3.6,11.63,2.01C6.27,2.2,1.98,6.59,1.98,12c0,0.14,0.02,0.28,0.02,0.42 C2.62,12.15,3.29,12,4,12c1.66,0,3.18,0.83,4.1,2.15C9.77,14.63,11,16.17,11,18c0,1.52-0.87,2.83-2.12,3.51 c0.98,0.32,2.03,0.5,3.11,0.5c3.5,0,6.58-1.8,8.37-4.52C18,17.72,13.38,16.52,11.1,12.08z" />
+											</g>
+											<path
+												d="M7,16l-0.18,0C6.4,14.84,5.3,14,4,14c-1.66,0-3,1.34-3,3s1.34,3,3,3c0.62,0,2.49,0,3,0c1.1,0,2-0.9,2-2 C9,16.9,8.1,16,7,16z" />
+										</g>
+									</g>
+								</svg>
+
 							</div>
-							<svg xmlns="http://www.w3.org/2000/svg" id="toggle-menu" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+						</div>
+						<svg xmlns="http://www.w3.org/2000/svg" id="toggle-menu" height="24" viewBox="0 0 24 24"
+							width="24">
+							<path d="M0 0h24v24H0z" fill="none" />
+							<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+						</svg>
 
-						</div>
-						<div id="search">
-							<input type="text" placeholder="Search... (beta)" autocomplete="off" />
-						</div>
+					</div>
+					<div id="search">
+						<input type="text" placeholder="Search... (beta)" autocomplete="off" />
 					</div>
 				</div>
-				<nav class="search hidden"></nav>
-				<nav class="content hidden">
-					<ul>
-						<li class="open active">
-<div class="menu-row"><a href="./vxai.html">vxai</a></div>
-</li>
+			</div>
+			<nav class="search hidden"></nav>
+			<nav class="content hidden">
+				<ul>
+					<li class="open active">
+						<div class="menu-row"><a href="./index.html">vxai</a></div>
+					</li>
 
-					</ul>
-				</nav>
-			</header>
-			<div class="doc-scrollview" tabindex="-1" id="main-content">
-				<div class="doc-container">
-					<div class="doc-content">
-								<section id="readme_vxai" class="doc-node">
-			<div class="title"><h1> vxai <a href="#readme_vxai">#</a></h1></div>
-<h1>vxai</h1><p><img src="https://img.shields.io/badge/language-V-blue.svg" alt="V Language" /></p><p>vxai is a V module that provides a simple API for interacting with <a href="https://docs.x.ai/api">xAI API</a></p><h2>Features</h2><ul><li>Simple interface for interacting with xAI API</li><li>Basics tests that can be ran by providing your own API key</li></ul><h2>Installation</h2><p>To use vbech32 in your V project, you can install it via VPM:</p><pre><code>v install ismyhc.vxai
-</code></pre><p>Or clone the repository:</p><pre><code>git clone https://github.com/ismyhc/vxai.git
+				</ul>
+			</nav>
+		</header>
+		<div class="doc-scrollview" tabindex="-1" id="main-content">
+			<div class="doc-container">
+				<div class="doc-content">
+					<section id="readme_vxai" class="doc-node">
+						<div class="title">
+							<h1> vxai <a href="#readme_vxai">#</a></h1>
+						</div>
+						<h1>vxai</h1>
+						<p><img src="https://img.shields.io/badge/language-V-blue.svg" alt="V Language" /></p>
+						<p>vxai is a V module that provides a simple API for interacting with <a
+								href="https://docs.x.ai/api">xAI API</a></p>
+						<h2>Features</h2>
+						<ul>
+							<li>Simple interface for interacting with xAI API</li>
+							<li>Basics tests that can be ran by providing your own API key</li>
+						</ul>
+						<h2>Installation</h2>
+						<p>To use vbech32 in your V project, you can install it via VPM:</p>
+						<pre><code>v install ismyhc.vxai
+</code></pre>
+						<p>Or clone the repository:</p>
+						<pre><code>git clone https://github.com/ismyhc/vxai.git
 cd vxai
 v install
-</code></pre><h2>Usage</h2><p>Take a look at the tests and the docs for more information on how to use vxai.</p><h2>Todo</h2><ul><li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled>Add more tests</li><li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled>Add more documentation</li><li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled>Add more examples</li><li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled>Add streaming support.</li></ul><h2>License</h2><p>This project is licensed under the MIT License</p><h2>Contact</h2><p>If you have any questions or feedback, please open an issue on this GitHub repository.</p>
+</code></pre>
+						<h2>Usage</h2>
+						<p>Take a look at the tests and the docs for more information on how to use vxai.</p>
+						<h2>Todo</h2>
+						<ul>
+							<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"
+									disabled>Add more tests</li>
+							<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"
+									disabled>Add more documentation</li>
+							<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"
+									disabled>Add more examples</li>
+							<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox"
+									disabled>Add streaming support.</li>
+						</ul>
+						<h2>License</h2>
+						<p>This project is licensed under the MIT License</p>
+						<h2>Contact</h2>
+						<p>If you have any questions or feedback, please open an issue on this GitHub repository.</p>
 
-</section>
+					</section>
 
-		<section id="Constants" class="doc-node const">
-			<div class="title"><h2>Constants <a href="#Constants">#</a></h2></div>
+					<section id="Constants" class="doc-node const">
+						<div class="title">
+							<h2>Constants <a href="#Constants">#</a></h2>
+						</div>
 
 
-</section>
+					</section>
 
-		<section id="" class="doc-node const">
-<pre class="signature">
+					<section id="" class="doc-node const">
+						<pre class="signature">
 <code><span class="token keyword">const</span> base_url <span class="token operator">=</span> <span class="token string">'https://api.x.ai/v1/'</span></code></pre>
-<p>base_url defines the default base URL for the X.AI API.</p>
+						<p>base_url defines the default base URL for the X.AI API.</p>
 
-</section>
+					</section>
 
-		<section id="ChatCompletionInput.new" class="doc-node">
-			<div class="title"><h2>fn ChatCompletionInput.new <a href="#ChatCompletionInput.new">#</a></h2></div>
-<pre class="signature">
+					<section id="ChatCompletionInput.new" class="doc-node">
+						<div class="title">
+							<h2>fn ChatCompletionInput.new <a href="#ChatCompletionInput.new">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> ChatCompletionInput<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>messages <span class="token punctuation">[</span><span class="token punctuation">]</span>ChatCompletionMessage<span class="token punctuation">,</span> model <span class="token builtin">string</span><span class="token punctuation">)</span> ChatCompletionInput</code></pre>
-<p>new creates a new instance of ChatCompletionInput.</p><p>Parameters:- messages: A list of ChatCompletionMessage objects representing the conversation history.</p><ul><li>model: The name of the model to use for generating the chat completion.</li></ul><p>Returns:- A new instance of ChatCompletionInput.</p>
+						<p>new creates a new instance of ChatCompletionInput.</p>
+						<p>Parameters:- messages: A list of ChatCompletionMessage objects representing the conversation
+							history.</p>
+						<ul>
+							<li>model: The name of the model to use for generating the chat completion.</li>
+						</ul>
+						<p>Returns:- A new instance of ChatCompletionInput.</p>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">messages <span class="token operator">:=</span> <span class="token punctuation">[</span>
     <span class="token symbol">ChatCompletionMessage</span><span class="token punctuation">{</span>
         role<span class="token punctuation">:</span> <span class="token string">'user'</span>
@@ -108,26 +165,31 @@ v install
 <span class="token punctuation">]</span>
 input <span class="token operator">:=</span> ChatCompletionInput<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>messages<span class="token punctuation">,</span> <span class="token string">'grok-beta'</span><span class="token punctuation">)</span>
 <span class="token function">println</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span></code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="XAIClient.new" class="doc-node">
-			<div class="title"><h2>fn XAIClient.new <a href="#XAIClient.new">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.new" class="doc-node">
+						<div class="title">
+							<h2>fn XAIClient.new <a href="#XAIClient.new">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> XAIClient<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>p XAIClientParams<span class="token punctuation">)</span> XAIClient</code></pre>
-<p>new creates a new instance of the XAIClient using the provided parameters.</p>
+						<p>new creates a new instance of the XAIClient using the provided parameters.</p>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">client <span class="token operator">:=</span> XAIClient<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token symbol">XAIClientParams</span><span class="token punctuation">{</span>
     api_key<span class="token punctuation">:</span> <span class="token string">'your_api_key'</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="APIKeyInfo" class="doc-node">
-			<div class="title"><h2>struct APIKeyInfo <a href="#APIKeyInfo">#</a></h2></div>
-<pre class="signature">
+					<section id="APIKeyInfo" class="doc-node">
+						<div class="title">
+							<h2>struct APIKeyInfo <a href="#APIKeyInfo">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">APIKeyInfo</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// acls is a list of access control rules associated with the API key.</span>
@@ -167,13 +229,16 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// user_id is the unique identifier for the user associated with the API key.</span>
 	user_id <span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-<p>APIKeyInfo represents detailed information about an API key, including its status, associated user, and access controls.</p>
+						<p>APIKeyInfo represents detailed information about an API key, including its status, associated
+							user, and access controls.</p>
 
-</section>
+					</section>
 
-		<section id="ChatCompletionInput" class="doc-node">
-			<div class="title"><h2>struct ChatCompletionInput <a href="#ChatCompletionInput">#</a></h2></div>
-<pre class="signature">
+					<section id="ChatCompletionInput" class="doc-node">
+						<div class="title">
+							<h2>struct ChatCompletionInput <a href="#ChatCompletionInput">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">ChatCompletionInput</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// frequency_penalty adjusts the likelihood of repetitive token generation.</span>
@@ -248,13 +313,16 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// This can be used for analytics or personalization.</span>
 	user <span class="token operator">?</span><span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-<p>ChatCompletionInput represents the input structure for creating a chat completion. It contains various parameters to control the behavior and output of the model.</p>
+						<p>ChatCompletionInput represents the input structure for creating a chat completion. It
+							contains various parameters to control the behavior and output of the model.</p>
 
-</section>
+					</section>
 
-		<section id="ChatCompletionMessage" class="doc-node">
-			<div class="title"><h2>struct ChatCompletionMessage <a href="#ChatCompletionMessage">#</a></h2></div>
-<pre class="signature">
+					<section id="ChatCompletionMessage" class="doc-node">
+						<div class="title">
+							<h2>struct ChatCompletionMessage <a href="#ChatCompletionMessage">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">ChatCompletionMessage</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// role specifies the role of the message sender.</span>
@@ -265,13 +333,16 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// This is the actual message exchanged in the conversation.</span>
 	content <span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-<p>ChatCompletionMessage represents a message exchanged during a chat completion. Each message has a role and its corresponding content.</p>
+						<p>ChatCompletionMessage represents a message exchanged during a chat completion. Each message
+							has a role and its corresponding content.</p>
 
-</section>
+					</section>
 
-		<section id="ChatCompletionResponse" class="doc-node">
-			<div class="title"><h2>struct ChatCompletionResponse <a href="#ChatCompletionResponse">#</a></h2></div>
-<pre class="signature">
+					<section id="ChatCompletionResponse" class="doc-node">
+						<div class="title">
+							<h2>struct ChatCompletionResponse <a href="#ChatCompletionResponse">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">ChatCompletionResponse</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// choices is a list of choices generated by the model.</span>
@@ -297,13 +368,16 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// usage provides details about the token usage for the request and response.</span>
 	usage Usage
 <span class="token punctuation">}</span></code></pre>
-<p>ChatCompletionResponse represents the response from the chat completion API. It includes the generated choices, metadata, and token usage information.</p>
+						<p>ChatCompletionResponse represents the response from the chat completion API. It includes the
+							generated choices, metadata, and token usage information.</p>
 
-</section>
+					</section>
 
-		<section id="Choice" class="doc-node">
-			<div class="title"><h2>struct Choice <a href="#Choice">#</a></h2></div>
-<pre class="signature">
+					<section id="Choice" class="doc-node">
+						<div class="title">
+							<h2>struct Choice <a href="#Choice">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">Choice</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// finish_reason indicates why the completion ended.</span>
@@ -317,13 +391,16 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// It contains the content and role of the response.</span>
 	message ChatCompletionMessage
 <span class="token punctuation">}</span></code></pre>
-<p>Choice represents an individual choice or completion generated by the model. It includes information about the generated message and its metadata.</p>
+						<p>Choice represents an individual choice or completion generated by the model. It includes
+							information about the generated message and its metadata.</p>
 
-</section>
+					</section>
 
-		<section id="EmbeddingModel" class="doc-node">
-			<div class="title"><h2>struct EmbeddingModel <a href="#EmbeddingModel">#</a></h2></div>
-<pre class="signature">
+					<section id="EmbeddingModel" class="doc-node">
+						<div class="title">
+							<h2>struct EmbeddingModel <a href="#EmbeddingModel">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">EmbeddingModel</span> <span class="token punctuation">{</span>
 	<span class="token comment">// created is the Unix timestamp indicating when the model was created.</span>
 	created <span class="token builtin">i64</span>
@@ -349,25 +426,31 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// version specifies the version of the embedding model, such as "1.0.0".</span>
 	version <span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-<p>EmbeddingModel represents a specific embedding model available in the X.AI API. It includes details about the model's ID, creation time, input capabilities, and pricing.</p>
+						<p>EmbeddingModel represents a specific embedding model available in the X.AI API. It includes
+							details about the model's ID, creation time, input capabilities, and pricing.</p>
 
-</section>
+					</section>
 
-		<section id="EmbeddingModelsResponse" class="doc-node">
-			<div class="title"><h2>struct EmbeddingModelsResponse <a href="#EmbeddingModelsResponse">#</a></h2></div>
-<pre class="signature">
+					<section id="EmbeddingModelsResponse" class="doc-node">
+						<div class="title">
+							<h2>struct EmbeddingModelsResponse <a href="#EmbeddingModelsResponse">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">EmbeddingModelsResponse</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// models is the list of embedding models available in the API.</span>
 	models <span class="token punctuation">[</span><span class="token punctuation">]</span>EmbeddingModel
 <span class="token punctuation">}</span></code></pre>
-<p>EmbeddingModelsResponse represents the response from the API when querying for all available embedding models. It contains a list of EmbeddingModel objects.</p>
+						<p>EmbeddingModelsResponse represents the response from the API when querying for all available
+							embedding models. It contains a list of EmbeddingModel objects.</p>
 
-</section>
+					</section>
 
-		<section id="LanguageModel" class="doc-node">
-			<div class="title"><h2>struct LanguageModel <a href="#LanguageModel">#</a></h2></div>
-<pre class="signature">
+					<section id="LanguageModel" class="doc-node">
+						<div class="title">
+							<h2>struct LanguageModel <a href="#LanguageModel">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">LanguageModel</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// completion_text_token_price specifies the token price for text completions generated by the model.</span>
@@ -397,25 +480,31 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// prompt_text_token_price specifies the token price for text-based inputs.</span>
 	prompt_text_token_price <span class="token builtin">i64</span>
 <span class="token punctuation">}</span></code></pre>
-<p>LanguageModel represents a specific language model available in the X.AI API. It includes details about the model's ID, creation time, input/output capabilities, and pricing.</p>
+						<p>LanguageModel represents a specific language model available in the X.AI API. It includes
+							details about the model's ID, creation time, input/output capabilities, and pricing.</p>
 
-</section>
+					</section>
 
-		<section id="LanguageModelsResponse" class="doc-node">
-			<div class="title"><h2>struct LanguageModelsResponse <a href="#LanguageModelsResponse">#</a></h2></div>
-<pre class="signature">
+					<section id="LanguageModelsResponse" class="doc-node">
+						<div class="title">
+							<h2>struct LanguageModelsResponse <a href="#LanguageModelsResponse">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">LanguageModelsResponse</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// models is the list of language models available in the API.</span>
 	models <span class="token punctuation">[</span><span class="token punctuation">]</span>LanguageModel
 <span class="token punctuation">}</span></code></pre>
-<p>LanguageModelsResponse represents the response from the API when querying for all available language models. It contains a list of LanguageModel objects.</p>
+						<p>LanguageModelsResponse represents the response from the API when querying for all available
+							language models. It contains a list of LanguageModel objects.</p>
 
-</section>
+					</section>
 
-		<section id="Model" class="doc-node">
-			<div class="title"><h2>struct Model <a href="#Model">#</a></h2></div>
-<pre class="signature">
+					<section id="Model" class="doc-node">
+						<div class="title">
+							<h2>struct Model <a href="#Model">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">Model</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// created is the Unix timestamp indicating when the model was created.</span>
@@ -430,25 +519,33 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// owned_by indicates the owner of the model, usually the organization or team responsible for it.</span>
 	owned_by <span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-<p>Model represents a model in the X.AI API. It includes details such as the creation time, ID, ownership, and object type.</p>
+						<p>Model represents a model in the X.AI API. It includes details such as the creation time, ID,
+							ownership, and object type.</p>
 
-</section>
+					</section>
 
-		<section id="ModelsResponse" class="doc-node">
-			<div class="title"><h2>struct ModelsResponse <a href="#ModelsResponse">#</a></h2></div>
-<pre class="signature">
+					<section id="ModelsResponse" class="doc-node">
+						<div class="title">
+							<h2>struct ModelsResponse <a href="#ModelsResponse">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">ModelsResponse</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// models is the list of models available in the API.</span>
 	models <span class="token punctuation">[</span><span class="token punctuation">]</span>Model @<span class="token punctuation">[</span>json<span class="token punctuation">:</span> data<span class="token punctuation">]</span>
 <span class="token punctuation">}</span></code></pre>
-<p>ModelsResponse represents the response from the API when querying for all models. It contains a list of Model objects.</p><p>The <code>@json: data</code> attribute maps the "data" key in the JSON response to the <code>models</code> field.</p>
+						<p>ModelsResponse represents the response from the API when querying for all models. It contains
+							a list of Model objects.</p>
+						<p>The <code>@json: data</code> attribute maps the "data" key in the JSON response to the
+							<code>models</code> field.</p>
 
-</section>
+					</section>
 
-		<section id="Usage" class="doc-node">
-			<div class="title"><h2>struct Usage <a href="#Usage">#</a></h2></div>
-<pre class="signature">
+					<section id="Usage" class="doc-node">
+						<div class="title">
+							<h2>struct Usage <a href="#Usage">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">Usage</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// completion_tokens is the number of tokens used in the generated response.</span>
@@ -461,13 +558,16 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// This is the sum of completion_tokens and prompt_tokens.</span>
 	total_tokens <span class="token builtin">int</span>
 <span class="token punctuation">}</span></code></pre>
-<p>Usage provides details about token usage for a chat completion request. It includes counts for prompt, completion, and total tokens.</p>
+						<p>Usage provides details about token usage for a chat completion request. It includes counts
+							for prompt, completion, and total tokens.</p>
 
-</section>
+					</section>
 
-		<section id="XAIClient" class="doc-node">
-			<div class="title"><h2>struct XAIClient <a href="#XAIClient">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient" class="doc-node">
+						<div class="title">
+							<h2>struct XAIClient <a href="#XAIClient">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">XAIClient</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// api_key is the API key used for authentication.</span>
@@ -477,26 +577,46 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 	<span class="token comment">// Defaults to `https://api.x.ai/v1/` but can be customized.</span>
 	base_url <span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-<p>XAIClient is a client for interacting with the X.AI API. It provides methods for making authenticated GET and POST requests.</p>
+						<p>XAIClient is a client for interacting with the X.AI API. It provides methods for making
+							authenticated GET and POST requests.</p>
 
-</section>
+					</section>
 
-		<section id="XAIClient.get_api_key_info" class="doc-node">
-			<div class="title"><h2>fn (XAIClient) get_api_key_info <a href="#XAIClient.get_api_key_info">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.get_api_key_info" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_api_key_info <a href="#XAIClient.get_api_key_info">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_api_key_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!</span>APIKeyInfo</code></pre>
-<p>get_api_key_info retrieves information about the current API key being used by the client. It sends a GET request to the "api-key" endpoint and parses the response into an APIKeyInfo struct.</p><p>Returns:- An APIKeyInfo struct containing detailed API key information if successful.</p><ul><li>An error if the request or JSON decoding fails.</li></ul>
+						<p>get_api_key_info retrieves information about the current API key being used by the client. It
+							sends a GET request to the "api-key" endpoint and parses the response into an APIKeyInfo
+							struct.</p>
+						<p>Returns:- An APIKeyInfo struct containing detailed API key information if successful.</p>
+						<ul>
+							<li>An error if the request or JSON decoding fails.</li>
+						</ul>
 
-</section>
+					</section>
 
-		<section id="XAIClient.get_chat_completion" class="doc-node">
-			<div class="title"><h2>fn (XAIClient) get_chat_completion <a href="#XAIClient.get_chat_completion">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.get_chat_completion" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_chat_completion <a href="#XAIClient.get_chat_completion">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_chat_completion</span><span class="token punctuation">(</span>input ChatCompletionInput<span class="token punctuation">)</span> <span class="token operator">!</span>ChatCompletionResponse</code></pre>
-<p>get_chat_completion sends a chat completion request to the X.AI API and retrieves the response.</p><p>Parameters:- input: A ChatCompletionInput struct containing the messages and model information for the request.</p><p>Returns:- A ChatCompletionResponse struct containing the generated chat completion and metadata.</p><ul><li>An error if the request fails or the response cannot be decoded.</li></ul>
+						<p>get_chat_completion sends a chat completion request to the X.AI API and retrieves the
+							response.</p>
+						<p>Parameters:- input: A ChatCompletionInput struct containing the messages and model
+							information for the request.</p>
+						<p>Returns:- A ChatCompletionResponse struct containing the generated chat completion and
+							metadata.</p>
+						<ul>
+							<li>An error if the request fails or the response cannot be decoded.</li>
+						</ul>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">messages <span class="token operator">:=</span> <span class="token punctuation">[</span>
     <span class="token symbol">ChatCompletionMessage</span><span class="token punctuation">{</span>
         role<span class="token punctuation">:</span> <span class="token string">'user'</span>
@@ -506,97 +626,148 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 input <span class="token operator">:=</span> ChatCompletionInput<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>messages<span class="token punctuation">,</span> <span class="token string">'grok-beta'</span><span class="token punctuation">)</span>
 response <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_chat_completion</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Generated Response: </span><span class="token string_interp">$</span>{response<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>message<span class="token punctuation">.</span>content}<span class="token string">'</span><span class="token punctuation">)</span></code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="XAIClient.get_embedding_model" class="doc-node">
-			<div class="title"><h2>fn (XAIClient) get_embedding_model <a href="#XAIClient.get_embedding_model">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.get_embedding_model" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_embedding_model <a href="#XAIClient.get_embedding_model">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_embedding_model</span><span class="token punctuation">(</span>id <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">!</span>EmbeddingModel</code></pre>
-<p>get_embedding_model retrieves details about a specific embedding model by its ID.</p><p>Parameters:- id: The unique identifier of the embedding model to retrieve.</p><p>Returns:- An EmbeddingModel struct containing details about the requested model.</p><ul><li>An error if the request fails or if the response cannot be decoded.</li></ul>
+						<p>get_embedding_model retrieves details about a specific embedding model by its ID.</p>
+						<p>Parameters:- id: The unique identifier of the embedding model to retrieve.</p>
+						<p>Returns:- An EmbeddingModel struct containing details about the requested model.</p>
+						<ul>
+							<li>An error if the request fails or if the response cannot be decoded.</li>
+						</ul>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">model <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_embedding_model</span><span class="token punctuation">(</span><span class="token string">'model-id'</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Created: $model.created')</code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="XAIClient.get_embedding_models" class="doc-node">
-			<div class="title"><h2>fn (XAIClient) get_embedding_models <a href="#XAIClient.get_embedding_models">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.get_embedding_models" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_embedding_models <a href="#XAIClient.get_embedding_models">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_embedding_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!</span>EmbeddingModelsResponse</code></pre>
-<p>get_embedding_models retrieves all available embedding models from the X.AI API.</p><p>Returns:- An EmbeddingModelsResponse struct containing a list of all available embedding models.</p><ul><li>An error if the request fails or if the response cannot be decoded.</li></ul>
+						<p>get_embedding_models retrieves all available embedding models from the X.AI API.</p>
+						<p>Returns:- An EmbeddingModelsResponse struct containing a list of all available embedding
+							models.</p>
+						<ul>
+							<li>An error if the request fails or if the response cannot be decoded.</li>
+						</ul>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">models_response <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_embedding_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token keyword">for</span> model <span class="token keyword">in</span> models_response<span class="token punctuation">.</span><span class="token symbol">models</span> <span class="token punctuation">{</span>
     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Version: $model.version')
 }</code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="XAIClient.get_language_model" class="doc-node">
-			<div class="title"><h2>fn (XAIClient) get_language_model <a href="#XAIClient.get_language_model">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.get_language_model" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_language_model <a href="#XAIClient.get_language_model">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_language_model</span><span class="token punctuation">(</span>id <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">!</span>LanguageModel</code></pre>
-<p>get_language_model retrieves details about a specific language model by its ID.</p><p>Parameters:- id: The unique identifier of the language model to retrieve.</p><p>Returns:- A LanguageModel struct containing details about the requested model.</p><ul><li>An error if the request fails or if the response cannot be decoded.</li></ul>
+						<p>get_language_model retrieves details about a specific language model by its ID.</p>
+						<p>Parameters:- id: The unique identifier of the language model to retrieve.</p>
+						<p>Returns:- A LanguageModel struct containing details about the requested model.</p>
+						<ul>
+							<li>An error if the request fails or if the response cannot be decoded.</li>
+						</ul>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">model <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_language_model</span><span class="token punctuation">(</span><span class="token string">'model-id'</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Created: $model.created')</code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="XAIClient.get_language_models" class="doc-node">
-			<div class="title"><h2>fn (XAIClient) get_language_models <a href="#XAIClient.get_language_models">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.get_language_models" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_language_models <a href="#XAIClient.get_language_models">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_language_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!</span>LanguageModelsResponse</code></pre>
-<p>get_language_models retrieves all available language models from the X.AI API.</p><p>Returns:- A LanguageModelsResponse struct containing a list of all available language models.</p><ul><li>An error if the request fails or if the response cannot be decoded.</li></ul>
+						<p>get_language_models retrieves all available language models from the X.AI API.</p>
+						<p>Returns:- A LanguageModelsResponse struct containing a list of all available language models.
+						</p>
+						<ul>
+							<li>An error if the request fails or if the response cannot be decoded.</li>
+						</ul>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">models_response <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_language_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token keyword">for</span> model <span class="token keyword">in</span> models_response<span class="token punctuation">.</span><span class="token symbol">models</span> <span class="token punctuation">{</span>
     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Input Modalities: $model.input_modalities')
 }</code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="XAIClient.get_model" class="doc-node">
-			<div class="title"><h2>fn (XAIClient) get_model <a href="#XAIClient.get_model">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.get_model" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_model <a href="#XAIClient.get_model">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_model</span><span class="token punctuation">(</span>id <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">!</span>Model</code></pre>
-<p>get_model retrieves details about a specific model by its ID.</p><p>Parameters:- id: The unique identifier of the model to retrieve.</p><p>Returns:- A Model struct containing details about the requested model.</p><ul><li>An error if the request fails or if the response cannot be decoded.</li></ul>
+						<p>get_model retrieves details about a specific model by its ID.</p>
+						<p>Parameters:- id: The unique identifier of the model to retrieve.</p>
+						<p>Returns:- A Model struct containing details about the requested model.</p>
+						<ul>
+							<li>An error if the request fails or if the response cannot be decoded.</li>
+						</ul>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">model <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_model</span><span class="token punctuation">(</span><span class="token string">'model-id'</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Created: $model.created')</code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="XAIClient.get_models" class="doc-node">
-			<div class="title"><h2>fn (XAIClient) get_models <a href="#XAIClient.get_models">#</a></h2></div>
-<pre class="signature">
+					<section id="XAIClient.get_models" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_models <a href="#XAIClient.get_models">#</a></h2>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!</span>ModelsResponse</code></pre>
-<p>get_models retrieves all available models from the X.AI API.</p><p>Returns:- A ModelsResponse struct containing a list of all available models.</p><ul><li>An error if the request fails or if the response cannot be decoded.</li></ul>
+						<p>get_models retrieves all available models from the X.AI API.</p>
+						<p>Returns:- A ModelsResponse struct containing a list of all available models.</p>
+						<ul>
+							<li>An error if the request fails or if the response cannot be decoded.</li>
+						</ul>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">models_response <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
 <span class="token keyword">for</span> model <span class="token keyword">in</span> models_response<span class="token punctuation">.</span><span class="token symbol">models</span> <span class="token punctuation">{</span>
     <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Owned By: $model.owned_by')
 }</code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
-		<section id="XAIClientParams" class="doc-node">
-			<div class="title"><h2>struct XAIClientParams <a href="#XAIClientParams">#</a></h2></div>
-<div class="attributes"><div class="attribute">@[params]</div></div>
-<pre class="signature">
+					<section id="XAIClientParams" class="doc-node">
+						<div class="title">
+							<h2>struct XAIClientParams <a href="#XAIClientParams">#</a></h2>
+						</div>
+						<div class="attributes">
+							<div class="attribute">@[params]</div>
+						</div>
+						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">XAIClientParams</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// api_key is the API key required for authentication.</span>
@@ -606,82 +777,104 @@ response <span class="token operator">:=</span> client<span class="token punctua
 	<span class="token comment">// If not provided, it defaults to `https://api.x.ai/v1/`.</span>
 	base_url <span class="token builtin">string</span> <span class="token operator">=</span> vxai<span class="token punctuation">.</span>base_url
 <span class="token punctuation">}</span></code></pre>
-<p>XAIClientParams is used to initialize an XAIClient instance. It supports optional customization of the base URL.</p>
+						<p>XAIClientParams is used to initialize an XAIClient instance. It supports optional
+							customization of the base URL.</p>
 
-<section class="doc-node examples"><h4>Example</h4>
-<pre>
+						<section class="doc-node examples">
+							<h4>Example</h4>
+							<pre>
 <code class="language-v">client <span class="token operator">:=</span> XAIClient<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token symbol">XAIClientParams</span><span class="token punctuation">{</span>
     api_key<span class="token punctuation">:</span> <span class="token string">'your_api_key'</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-</section>
-</section>
+						</section>
+					</section>
 
 
-						<div class="footer">Powered by vdoc. Generated on: 7 Dec 2024 17:56:37</div>
-					</div>
-					<div class="doc-toc"><ul><li class="open"><a href="#readme_vxai">README</a></li>
-<li class="open"><a href="#Constants">Constants</a></li>
-<li class="open"><a href="#ChatCompletionInput.new">fn ChatCompletionInput.new</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#XAIClient.new">fn XAIClient.new</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#APIKeyInfo">struct APIKeyInfo</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#ChatCompletionInput">struct ChatCompletionInput</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#ChatCompletionMessage">struct ChatCompletionMessage</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#ChatCompletionResponse">struct ChatCompletionResponse</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#Choice">struct Choice</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#EmbeddingModel">struct EmbeddingModel</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#EmbeddingModelsResponse">struct EmbeddingModelsResponse</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#LanguageModel">struct LanguageModel</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#LanguageModelsResponse">struct LanguageModelsResponse</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#Model">struct Model</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#ModelsResponse">struct ModelsResponse</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#Usage">struct Usage</a>        <ul>
-</ul>
-</li>
-<li class="open"><a href="#XAIClient">struct XAIClient</a>        <ul>
-<li><a href="#XAIClient.get_api_key_info">fn get_api_key_info</a></li>
-<li><a href="#XAIClient.get_chat_completion">fn get_chat_completion</a></li>
-<li><a href="#XAIClient.get_embedding_model">fn get_embedding_model</a></li>
-<li><a href="#XAIClient.get_embedding_models">fn get_embedding_models</a></li>
-<li><a href="#XAIClient.get_language_model">fn get_language_model</a></li>
-<li><a href="#XAIClient.get_language_models">fn get_language_models</a></li>
-<li><a href="#XAIClient.get_model">fn get_model</a></li>
-<li><a href="#XAIClient.get_models">fn get_models</a></li>
-</ul>
-</li>
-<li class="open"><a href="#XAIClientParams">struct XAIClientParams</a>        <ul>
-</ul>
-</li>
-</ul></div>
+					<div class="footer">Powered by vdoc. Generated on: 7 Dec 2024 17:56:37</div>
+				</div>
+				<div class="doc-toc">
+					<ul>
+						<li class="open"><a href="#readme_vxai">README</a></li>
+						<li class="open"><a href="#Constants">Constants</a></li>
+						<li class="open"><a href="#ChatCompletionInput.new">fn ChatCompletionInput.new</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#XAIClient.new">fn XAIClient.new</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#APIKeyInfo">struct APIKeyInfo</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#ChatCompletionInput">struct ChatCompletionInput</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#ChatCompletionMessage">struct ChatCompletionMessage</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#ChatCompletionResponse">struct ChatCompletionResponse</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#Choice">struct Choice</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#EmbeddingModel">struct EmbeddingModel</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#EmbeddingModelsResponse">struct EmbeddingModelsResponse</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#LanguageModel">struct LanguageModel</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#LanguageModelsResponse">struct LanguageModelsResponse</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#Model">struct Model</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#ModelsResponse">struct ModelsResponse</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#Usage">struct Usage</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#XAIClient">struct XAIClient</a>
+							<ul>
+								<li><a href="#XAIClient.get_api_key_info">fn get_api_key_info</a></li>
+								<li><a href="#XAIClient.get_chat_completion">fn get_chat_completion</a></li>
+								<li><a href="#XAIClient.get_embedding_model">fn get_embedding_model</a></li>
+								<li><a href="#XAIClient.get_embedding_models">fn get_embedding_models</a></li>
+								<li><a href="#XAIClient.get_language_model">fn get_language_model</a></li>
+								<li><a href="#XAIClient.get_language_models">fn get_language_models</a></li>
+								<li><a href="#XAIClient.get_model">fn get_model</a></li>
+								<li><a href="#XAIClient.get_models">fn get_models</a></li>
+							</ul>
+						</li>
+						<li class="open"><a href="#XAIClientParams">struct XAIClientParams</a>
+							<ul>
+							</ul>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-		<script src="doc.js"></script>
-		<script async src="search_index.js"></script>
-	</body>
+	</div>
+	<script src="doc.js"></script>
+	<script async src="search_index.js"></script>
+</body>
+
 </html>

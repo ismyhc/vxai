@@ -1,6 +1,7 @@
 module vxai
 
 import json
+import net.http
 
 // ChatCompletionInput represents the input structure for creating a chat completion.
 // It contains various parameters to control the behavior and output of the model.
@@ -151,6 +152,69 @@ pub:
 	usage Usage
 }
 
+// StreamChatCompletionChunk represents a single streamed chunk of a chat completion response.
+pub struct StreamChatCompletionChunk {
+pub:
+	// A unique identifier for this specific chunk of the completion.
+	id string
+	// The type of the returned object, typically "chat.completion.chunk".
+	object string
+	// The Unix timestamp (in seconds) indicating when this chunk was generated.
+	created i64
+	// An array of StreamChoice objects, each representing a portion of the streamed completion.
+	choices []StreamChoice
+	// Token usage statistics for this chunk, including prompt and completion tokens.
+	usage StreamUsage
+	// A server-generated fingerprint for debugging or reference.
+	system_fingerprint string
+}
+
+// StreamChoice represents an individual choice within a streamed chunk.
+pub struct StreamChoice {
+pub:
+	// The position of this choice in the list of returned choices.
+	index int
+	// A StreamDelta object containing newly streamed content or role information.
+	delta StreamDelta
+	// An optional reason indicating why this choice concluded (e.g., "stop").
+	finish_reason ?string
+}
+
+// StreamUsage contains token usage details for a streamed completion segment.
+pub struct StreamUsage {
+pub:
+	// The number of tokens used in the prompt.
+	prompt_tokens int
+	// The number of tokens generated in this streamed response.
+	completion_tokens int
+	// The total number of tokens processed so far (prompt + completion).
+	total_tokens int
+	// Detailed breakdown of the prompt tokens by type (text, audio, image, cached).
+	prompt_tokens_details PromptTokenDetails
+}
+
+// PromptTokenDetails provides a breakdown of the prompt tokens by type.
+pub struct PromptTokenDetails {
+pub:
+	// Number of tokens derived from textual input.
+	text_tokens int
+	// Number of tokens derived from audio input.
+	audio_tokens int
+	// Number of tokens derived from images.
+	image_tokens int
+	// Number of tokens retrieved from cache.
+	cached_tokens int
+}
+
+// StreamDelta represents incremental updates to the streamed completion.
+pub struct StreamDelta {
+pub:
+	// Newly generated text or partial completion content (if any).
+	content ?string
+	// The role associated with this content, such as "assistant" or "system".
+	role string
+}
+
 // new creates a new instance of ChatCompletionInput.
 //
 // Parameters:
@@ -175,6 +239,7 @@ pub fn ChatCompletionInput.new(messages []ChatCompletionMessage, model string) C
 	return ChatCompletionInput{
 		messages: messages
 		model:    model
+		stream:   true
 	}
 }
 
@@ -202,7 +267,24 @@ pub fn ChatCompletionInput.new(messages []ChatCompletionMessage, model string) C
 pub fn (c XAIClient) get_chat_completion(input ChatCompletionInput) !ChatCompletionResponse {
 	data := json.encode(input)
 	res := c.post('chat/completions', data) or { return error('Failed to post chat completion') }
-	return json.decode(ChatCompletionResponse, res.body) or {
-		return error('Failed to decode response')
-	}
+	return json.decode(ChatCompletionResponse, res.body) or { return err }
+}
+
+// stream_chat_completion sends a streaming chat completion request to the XAI API using the specified `input`.
+//
+// Each chunk of the streamed response is decoded as a `StreamChatCompletionChunk` and passed to the `on_message` callback
+// as soon as it arrives. This allows you to process the streaming content incrementally rather than waiting for the full response.
+//
+// Parameters:
+// - `input`: A `ChatCompletionInput` struct containing the details of the chat prompt and configuration for the completion.
+// - `on_message`: A callback function of type `fn (StreamChatCompletionChunk)` that is invoked for each chunk of streamed data as it arrives.
+//
+// Returns:
+// - `http.Response` representing the final HTTP response after the stream completes.
+//
+// Errors:
+// Returns an error if the request fails to send, encounters connectivity issues, or if the response is invalid.
+pub fn (c XAIClient) stream_chat_completion(input ChatCompletionInput, on_message fn (StreamChatCompletionChunk)) !http.Response {
+	data := json.encode(input)
+	return c.stream('chat/completions', data, on_message) or { return err }
 }

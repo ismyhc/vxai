@@ -1,7 +1,8 @@
-import vxai
-import os
+module main
 
-fn test_vxai_chat_completion() {
+import vxai
+
+fn main() {
 	api_key := vxai.get_api_key_from_env('XAI_API_KEY') or { panic('Failed to get API key') }
 	client := vxai.XAIClient.new(vxai.XAIClientParams{
 		api_key: api_key
@@ -17,5 +18,7 @@ fn test_vxai_chat_completion() {
 		},
 	]
 	input := vxai.ChatCompletionInput.new(messages, 'grok-beta')
-	res := client.get_chat_completion(input) or { panic(err) }
+	_ := client.stream_chat_completion(input, fn (message vxai.StreamChatCompletionChunk) {
+		dump(message)
+	}) or { panic(err) }
 }

@@ -1,6 +1,7 @@
 module vxai
 
 import net.http
+import json
 
 // base_url defines the default base URL for the X.AI API.
 pub const base_url = 'https://api.x.ai/v1/'
@@ -91,9 +92,42 @@ fn (c XAIClient) get(path string) !http.Response {
 // ```
 fn (c XAIClient) post(path string, data string) !http.Response {
 	mut req := http.Request{
-		method: .post
-		url:    c.base_url + path
-		data:   data
+		method:           .post
+		url:              c.base_url + path
+		data:             data
+		on_progress_body: fn (r &http.Request, c []u8, b u64, d u64, e int) ! {
+			println(c.bytestr())
+		}
+	}
+	req.add_header(.authorization, 'Bearer ' + c.api_key)
+	req.add_header(.content_type, 'application/json')
+	return req.do()
+}
+
+fn (c XAIClient) stream(path string, data string, on_message fn (StreamChatCompletionChunk)) !http.Response {
+	mut req := http.Request{
+		method:           .post
+		url:              c.base_url + path
+		data:             data
+		on_progress_body: fn [on_message] (request &http.Request, chunk []u8, body_read_so_far u64, body_expected_size u64, status_code int) ! {
+			mut chunk_str := chunk.bytestr()
+
+			if chunk_str.contains('[DONE]') {
+				return
+			}
+
+			// Cleanup chunk for JSON decoding
+			// Remove data: prefix
+			idx := chunk_str.index('{"id') or { -1 }
+			if idx >= 0 {
+				chunk_str = chunk_str[idx..]
+			}
+
+			stream_chat_completion_response := json.decode(StreamChatCompletionChunk,
+				chunk_str) or { return }
+
+			on_message(stream_chat_completion_response)
+		}
 	}
 	req.add_header(.authorization, 'Bearer ' + c.api_key)
 	req.add_header(.content_type, 'application/json')

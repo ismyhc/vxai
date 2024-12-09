@@ -16,7 +16,7 @@ import os
 // api_key := get_api_key_from_env('API_KEY') or { panic(err) }
 // println('API Key: $api_key')
 // ```
-fn get_api_key_from_env(env string) !string {
+pub fn get_api_key_from_env(env string) !string {
 	api_key := os.getenv(env)
 	if api_key == '' {
 		panic('${env} not set. Please set your environment variables')

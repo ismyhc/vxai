@@ -34,14 +34,6 @@ pub:
 // Returns:
 // - A ModelsResponse struct containing a list of all available models.
 // - An error if the request fails or if the response cannot be decoded.
-//
-// Example:
-// ```v
-// models_response := client.get_models() or { panic(err) }
-// for model in models_response.models {
-//     println('Model ID: $model.id, Owned By: $model.owned_by')
-// }
-// ```
 pub fn (c XAIClient) get_models() !ModelsResponse {
 	res := c.get('models') or { return error('Failed to get models') }
 	return json.decode(ModelsResponse, res.body) or { return error('Failed to decode response') }
@@ -55,12 +47,6 @@ pub fn (c XAIClient) get_models() !ModelsResponse {
 // Returns:
 // - A Model struct containing details about the requested model.
 // - An error if the request fails or if the response cannot be decoded.
-//
-// Example:
-// ```v
-// model := client.get_model('model-id') or { panic(err) }
-// println('Model ID: $model.id, Created: $model.created')
-// ```
 pub fn (c XAIClient) get_model(id string) !Model {
 	res := c.get('models/' + id) or { return error('Failed to get model') }
 	return json.decode(Model, res.body) or { return error('Failed to decode response') }

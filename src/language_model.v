@@ -47,14 +47,6 @@ pub:
 // Returns:
 // - A LanguageModelsResponse struct containing a list of all available language models.
 // - An error if the request fails or if the response cannot be decoded.
-//
-// Example:
-// ```v
-// models_response := client.get_language_models() or { panic(err) }
-// for model in models_response.models {
-//     println('Model ID: $model.id, Input Modalities: $model.input_modalities')
-// }
-// ```
 pub fn (c XAIClient) get_language_models() !LanguageModelsResponse {
 	res := c.get('language-models') or { return error('Failed to get language models') }
 	return json.decode(LanguageModelsResponse, res.body) or {
@@ -70,12 +62,6 @@ pub fn (c XAIClient) get_language_models() !LanguageModelsResponse {
 // Returns:
 // - A LanguageModel struct containing details about the requested model.
 // - An error if the request fails or if the response cannot be decoded.
-//
-// Example:
-// ```v
-// model := client.get_language_model('model-id') or { panic(err) }
-// println('Model ID: $model.id, Created: $model.created')
-// ```
 pub fn (c XAIClient) get_language_model(id string) !LanguageModel {
 	res := c.get('language-models/' + id) or { return error('Failed to get language model') }
 	return json.decode(LanguageModel, res.body) or { return error('Failed to decode response') }

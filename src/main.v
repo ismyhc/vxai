@@ -18,7 +18,12 @@ fn main() {
 		},
 	]
 	input := vxai.ChatCompletionInput.new(messages, 'grok-beta')
-	_ := client.stream_chat_completion(input, fn (message vxai.StreamChatCompletionChunk) {
-		dump(message)
-	}) or { panic(err) }
+	res := client.stream_chat_completion(input, fn (message vxai.StreamChatCompletionChunk) {
+	}, fn () {
+		println('Done')
+	}) or {
+		println(err)
+		return
+	}
+	println(res.status_code)
 }

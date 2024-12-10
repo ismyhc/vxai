@@ -223,18 +223,6 @@ pub:
 //
 // Returns:
 // - A new instance of ChatCompletionInput.
-//
-// Example:
-// ```v
-// messages := [
-//     ChatCompletionMessage{
-//         role: 'user'
-//         content: 'Hello!'
-//     }
-// ]
-// input := ChatCompletionInput.new(messages, 'grok-beta')
-// println(input)
-// ```
 pub fn ChatCompletionInput.new(messages []ChatCompletionMessage, model string) ChatCompletionInput {
 	return ChatCompletionInput{
 		messages: messages
@@ -251,19 +239,6 @@ pub fn ChatCompletionInput.new(messages []ChatCompletionMessage, model string) C
 // Returns:
 // - A ChatCompletionResponse struct containing the generated chat completion and metadata.
 // - An error if the request fails or the response cannot be decoded.
-//
-// Example:
-// ```v
-// messages := [
-//     ChatCompletionMessage{
-//         role: 'user'
-//         content: 'Tell me a joke!'
-//     }
-// ]
-// input := ChatCompletionInput.new(messages, 'grok-beta')
-// response := client.get_chat_completion(input) or { panic(err) }
-// println('Generated Response: ${response.choices[0].message.content}')
-// ```
 pub fn (c XAIClient) get_chat_completion(input ChatCompletionInput) !ChatCompletionResponse {
 	data := json.encode(input)
 	res := c.post('chat/completions', data) or { return error('Failed to post chat completion') }
@@ -284,7 +259,7 @@ pub fn (c XAIClient) get_chat_completion(input ChatCompletionInput) !ChatComplet
 //
 // Errors:
 // Returns an error if the request fails to send, encounters connectivity issues, or if the response is invalid.
-pub fn (c XAIClient) stream_chat_completion(input ChatCompletionInput, on_message fn (StreamChatCompletionChunk)) !http.Response {
+pub fn (c XAIClient) stream_chat_completion(input ChatCompletionInput, on_message fn (StreamChatCompletionChunk), on_finish fn ()) !http.Response {
 	data := json.encode(input)
-	return c.stream('chat/completions', data, on_message) or { return err }
+	return c.stream('chat/completions', data, on_message, on_finish) or { return err }
 }

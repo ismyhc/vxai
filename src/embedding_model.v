@@ -43,14 +43,6 @@ pub:
 // Returns:
 // - An EmbeddingModelsResponse struct containing a list of all available embedding models.
 // - An error if the request fails or if the response cannot be decoded.
-//
-// Example:
-// ```v
-// models_response := client.get_embedding_models() or { panic(err) }
-// for model in models_response.models {
-//     println('Model ID: $model.id, Version: $model.version')
-// }
-// ```
 pub fn (c XAIClient) get_embedding_models() !EmbeddingModelsResponse {
 	res := c.get('embedding-models') or { return error('Failed to get embedding models') }
 	dump(res.body)
@@ -67,12 +59,6 @@ pub fn (c XAIClient) get_embedding_models() !EmbeddingModelsResponse {
 // Returns:
 // - An EmbeddingModel struct containing details about the requested model.
 // - An error if the request fails or if the response cannot be decoded.
-//
-// Example:
-// ```v
-// model := client.get_embedding_model('model-id') or { panic(err) }
-// println('Model ID: $model.id, Created: $model.created')
-// ```
 pub fn (c XAIClient) get_embedding_model(id string) !EmbeddingModel {
 	res := c.get('embedding-models/' + id) or { return error('Failed to get embedding model') }
 	return json.decode(EmbeddingModel, res.body) or { return error('Failed to decode response') }

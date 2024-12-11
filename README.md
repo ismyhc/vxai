@@ -1,4 +1,4 @@
-![xAI API modue for V: vxai](https://vxai.github.io/assets/banner.png)
+![xAI API modue for V: vxai](https://github.com/ismyhc/vxai/blob/4570fab0b93d6ff48f6c440beb8e1caa88c32d05/header.png)
 
 # vxai
 

@@ -53,6 +53,7 @@ pub:
 
 	// stream enables or disables response streaming.
 	// When true, the response is sent as a stream rather than a complete object.
+mut:
 	stream bool
 
 	// temperature controls the randomness of the response generation.
@@ -227,7 +228,6 @@ pub fn ChatCompletionInput.new(messages []ChatCompletionMessage, model string) C
 	return ChatCompletionInput{
 		messages: messages
 		model:    model
-		stream:   true
 	}
 }
 
@@ -259,7 +259,8 @@ pub fn (c XAIClient) get_chat_completion(input ChatCompletionInput) !ChatComplet
 //
 // Errors:
 // Returns an error if the request fails to send, encounters connectivity issues, or if the response is invalid.
-pub fn (c XAIClient) stream_chat_completion(input ChatCompletionInput, on_message fn (StreamChatCompletionChunk), on_finish fn ()) !http.Response {
+pub fn (c XAIClient) stream_chat_completion(mut input ChatCompletionInput, on_message fn (StreamChatCompletionChunk), on_finish fn ()) !http.Response {
+	input.stream = true
 	data := json.encode(input)
 	return c.stream('chat/completions', data, on_message, on_finish) or { return err }
 }

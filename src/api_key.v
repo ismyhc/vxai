@@ -1,6 +1,7 @@
 module vxai
 
 import json
+import os
 
 // APIKeyInfo represents detailed information about an API key,
 // including its status, associated user, and access controls.
@@ -53,4 +54,20 @@ pub:
 pub fn (c XAIClient) get_api_key_info() !APIKeyInfo {
 	res := c.get('api-key') or { return error('Failed to get API key info') }
 	return json.decode(APIKeyInfo, res.body) or { return error('Failed to decode response') }
+}
+
+// get_api_key_from_env retrieves an API key from the specified environment variable.
+//
+// Parameters:
+// - env: The name of the environment variable containing the API key.
+//
+// Returns:
+// - The API key as a string if the environment variable is set.
+// - An error if the environment variable is not set or is empty.
+pub fn get_api_key_from_env(env string) !string {
+	api_key := os.getenv(env)
+	if api_key == '' {
+		panic('${env} not set. Please set your environment variables')
+	}
+	return api_key
 }

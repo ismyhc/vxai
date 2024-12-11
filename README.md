@@ -1,3 +1,5 @@
+![xAI API modue for V: vxai](https://vxai.github.io/assets/banner.png)
+
 # vxai
 
 ![V Language](https://img.shields.io/badge/language-V-blue.svg)

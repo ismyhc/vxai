@@ -87,17 +87,18 @@
 						<div class="title">
 							<h1> vxai <a href="#readme_vxai">#</a></h1>
 						</div>
+						<p><img src="https://github.com/ismyhc/vxai/blob/4570fab0b93d6ff48f6c440beb8e1caa88c32d05/header.png"
+								alt="xAI API modue for V: vxai" /></p>
 						<h1>vxai</h1>
 						<p><img src="https://img.shields.io/badge/language-V-blue.svg" alt="V Language" /></p>
-						<p>vxai is a V module that provides a simple API for interacting with <a
-								href="https://docs.x.ai/api">xAI API</a></p>
+						<p>vxai is a V module that provides support for <a href="https://docs.x.ai/api">xAI API</a></p>
 						<h2>Features</h2>
 						<ul>
 							<li>Simple interface for interacting with xAI API</li>
 							<li>Basics tests that can be ran by providing your own API key</li>
 						</ul>
 						<h2>Installation</h2>
-						<p>To use vbech32 in your V project, you can install it via VPM:</p>
+						<p>To use vxai in your V project, you can install it via VPM:</p>
 						<pre><code>v install ismyhc.vxai
 </code></pre>
 						<p>Or clone the repository:</p>
@@ -135,8 +136,65 @@ v install
 
 					<section id="" class="doc-node const">
 						<pre class="signature">
+<code><span class="token keyword">const</span> model_path <span class="token operator">=</span> <span class="token string">'models'</span></code></pre>
+						<p>The API path for models.</p>
+
+					</section>
+
+					<section id="" class="doc-node const">
+						<pre class="signature">
+<code><span class="token keyword">const</span> embedding_model_path <span class="token operator">=</span> <span class="token string">'embedding-models'</span></code></pre>
+						<p>The API path for embedding models.</p>
+
+					</section>
+
+					<section id="" class="doc-node const">
+						<pre class="signature">
 <code><span class="token keyword">const</span> base_url <span class="token operator">=</span> <span class="token string">'https://api.x.ai/v1/'</span></code></pre>
 						<p>base_url defines the default base URL for the X.AI API.</p>
+
+					</section>
+
+					<section id="" class="doc-node const">
+						<pre class="signature">
+<code><span class="token keyword">const</span> api_key_path <span class="token operator">=</span> <span class="token string">'api-key'</span></code></pre>
+						<p>The API path for api key.</p>
+
+					</section>
+
+					<section id="" class="doc-node const">
+						<pre class="signature">
+<code><span class="token keyword">const</span> chat_completion_path <span class="token operator">=</span> <span class="token string">'chat/completions'</span></code></pre>
+						<p>The API path for chat completions.</p>
+
+					</section>
+
+					<section id="" class="doc-node const">
+						<pre class="signature">
+<code><span class="token keyword">const</span> completion_path <span class="token operator">=</span> <span class="token string">'completions'</span></code></pre>
+						<p>The API path for completions.</p>
+
+					</section>
+
+					<section id="" class="doc-node const">
+						<pre class="signature">
+<code><span class="token keyword">const</span> language_model_path <span class="token operator">=</span> <span class="token string">'language-models'</span></code></pre>
+						<p>The API path for language models.</p>
+
+					</section>
+
+					<section id="get_api_key_from_env" class="doc-node">
+						<div class="title">
+							<h2>fn get_api_key_from_env <a href="#get_api_key_from_env">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">fn</span> <span class="token function">get_api_key_from_env</span><span class="token punctuation">(</span>env <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">!</span><span class="token builtin">string</span></code></pre>
+						<p>get_api_key_from_env retrieves an API key from the specified environment variable.</p>
+						<p>Parameters:- env: The name of the environment variable containing the API key.</p>
+						<p>Returns:- The API key as a string if the environment variable is set.</p>
+						<ul>
+							<li>An error if the environment variable is not set or is empty.</li>
+						</ul>
 
 					</section>
 
@@ -146,26 +204,30 @@ v install
 						</div>
 						<pre class="signature">
 <code><span class="token keyword">fn</span> ChatCompletionInput<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>messages <span class="token punctuation">[</span><span class="token punctuation">]</span>ChatCompletionMessage<span class="token punctuation">,</span> model <span class="token builtin">string</span><span class="token punctuation">)</span> ChatCompletionInput</code></pre>
-						<p>new creates a new instance of ChatCompletionInput.</p>
-						<p>Parameters:- messages: A list of ChatCompletionMessage objects representing the conversation
-							history.</p>
+						<p>ChatCompletionInput.new creates a new ChatCompletionInput with the given messages and model.
+						</p>
+						<p>Parameters:- messages: A list of input messages defining the conversation context.</p>
 						<ul>
-							<li>model: The name of the model to use for generating the chat completion.</li>
+							<li>model: The name of the model to use for the completion.</li>
 						</ul>
-						<p>Returns:- A new instance of ChatCompletionInput.</p>
+						<p>Returns:- A ChatCompletionInput instance with the specified parameters.</p>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">messages <span class="token operator">:=</span> <span class="token punctuation">[</span>
-    <span class="token symbol">ChatCompletionMessage</span><span class="token punctuation">{</span>
-        role<span class="token punctuation">:</span> <span class="token string">'user'</span>
-        content<span class="token punctuation">:</span> <span class="token string">'Hello!'</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">]</span>
-input <span class="token operator">:=</span> ChatCompletionInput<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>messages<span class="token punctuation">,</span> <span class="token string">'grok-beta'</span><span class="token punctuation">)</span>
-<span class="token function">println</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span></code></pre>
-						</section>
+					</section>
+
+					<section id="CompletionInput.new" class="doc-node">
+						<div class="title">
+							<h2>fn CompletionInput.new <a href="#CompletionInput.new">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">fn</span> CompletionInput<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>prompt <span class="token builtin">string</span><span class="token punctuation">,</span> model <span class="token builtin">string</span><span class="token punctuation">)</span> CompletionInput</code></pre>
+						<p>CompletionInput.new creates a new CompletionInput instance with the given prompt and model.
+						</p>
+						<p>Parameters:- prompt: The input text to generate a completion for.</p>
+						<ul>
+							<li>model: The name of the model to use for generating the completion.</li>
+						</ul>
+						<p>Returns:- A new CompletionInput instance.</p>
+
 					</section>
 
 					<section id="XAIClient.new" class="doc-node">
@@ -176,13 +238,6 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 <code><span class="token keyword">fn</span> XAIClient<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>p XAIClientParams<span class="token punctuation">)</span> XAIClient</code></pre>
 						<p>new creates a new instance of the XAIClient using the provided parameters.</p>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">client <span class="token operator">:=</span> XAIClient<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token symbol">XAIClientParams</span><span class="token punctuation">{</span>
-    api_key<span class="token punctuation">:</span> <span class="token string">'your_api_key'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-						</section>
 					</section>
 
 					<section id="APIKeyInfo" class="doc-node">
@@ -234,6 +289,26 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 
 					</section>
 
+					<section id="ChatCompletionChoice" class="doc-node">
+						<div class="title">
+							<h2>struct ChatCompletionChoice <a href="#ChatCompletionChoice">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">ChatCompletionChoice</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// finish_reason explains why the completion stopped (e.g., "length", "stop").</span>
+	finish_reason <span class="token builtin">string</span>
+
+	<span class="token comment">// index is the position of this choice in the list of returned choices.</span>
+	index <span class="token builtin">int</span>
+
+	<span class="token comment">// message contains the content of the generated message.</span>
+	message ChatCompletionMessage
+<span class="token punctuation">}</span></code></pre>
+						<p>ChatCompletionChoice represents a single completion choice returned by the API.</p>
+
+					</section>
+
 					<section id="ChatCompletionInput" class="doc-node">
 						<div class="title">
 							<h2>struct ChatCompletionInput <a href="#ChatCompletionInput">#</a></h2>
@@ -241,80 +316,86 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">ChatCompletionInput</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
-	<span class="token comment">// frequency_penalty adjusts the likelihood of repetitive token generation.</span>
-	<span class="token comment">// A higher value discourages repetition in the response.</span>
+	<span class="token comment">// Number between -2.0 and 2.0. Positive values penalize new tokens based on</span>
+	<span class="token comment">// their existing frequency in the text so far, decreasing the model's</span>
+	<span class="token comment">// likelihood to repeat the same line verbatim.</span>
 	frequency_penalty <span class="token operator">?</span><span class="token builtin">f32</span>
 
-	<span class="token comment">// logit_bias allows specific tokens to be biased by modifying their logits.</span>
-	<span class="token comment">// It maps tokens (strings) to their respective bias values.</span>
+	<span class="token comment">// A JSON object that maps tokens (specified by their token ID in the tokenizer)</span>
+	<span class="token comment">// to an associated bias value from -100 to 100. Mathematically, the bias is added</span>
+	<span class="token comment">// to the logits generated by the model prior to sampling. The exact effect will</span>
+	<span class="token comment">// vary per model, but values between -1 and 1 should decrease or increase likelihood</span>
+	<span class="token comment">// of selection; values like -100 or 100 should result in a ban or exclusive selection</span>
+	<span class="token comment">//  of the relevant token.</span>
 	logit_bias <span class="token operator">?</span><span class="token builtin">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">f32</span>
 
-	<span class="token comment">// logprobs specifies whether to include the log probabilities of tokens in the response.</span>
-	<span class="token comment">// When true, the response will contain token-level probabilities.</span>
+	<span class="token comment">// Whether to return log probabilities of the output tokens or not. If true, returns</span>
+	<span class="token comment">// the log probabilities of each output token returned in the content of message.</span>
 	logprobs <span class="token operator">?</span><span class="token builtin">bool</span>
 
-	<span class="token comment">// max_tokens sets the maximum number of tokens the model can generate.</span>
-	<span class="token comment">// This limits the length of the output.</span>
+	<span class="token comment">// The maximum number of tokens that can be generated in the chat completion. This</span>
+	<span class="token comment">// value can be used to control costs for text generated via API.</span>
 	max_tokens <span class="token operator">?</span><span class="token builtin">int</span>
 
-	<span class="token comment">// messages contains the conversation history as an array of ChatCompletionMessage.</span>
-	<span class="token comment">// It provides context for the assistant to generate appropriate responses.</span>
+	<span class="token comment">// A list of messages that make up the the chat conversation. Different models</span>
+	<span class="token comment">// support different message types, such as image and text.</span>
 	messages <span class="token punctuation">[</span><span class="token punctuation">]</span>ChatCompletionMessage
 
-	<span class="token comment">// model specifies the name of the model to use for the chat completion.</span>
-	<span class="token comment">// This determines the capabilities and behavior of the assistant.</span>
+	<span class="token comment">// Model name for the model to use.</span>
 	model <span class="token builtin">string</span>
 
-	<span class="token comment">// n defines the number of completions to generate.</span>
-	<span class="token comment">// For example, setting n=2 will produce two independent responses.</span>
+	<span class="token comment">// How many chat completion choices to generate for each input message. Note that</span>
+	<span class="token comment">// you will be charged based on the number of generated tokens across all of the</span>
+	<span class="token comment">// choices. Keep n as 1 to minimize costs.</span>
 	n <span class="token operator">?</span><span class="token builtin">int</span>
 
-	<span class="token comment">// presence_penalty adjusts the likelihood of introducing new topics in the response.</span>
-	<span class="token comment">// A higher value encourages diverse and novel content.</span>
+	<span class="token comment">// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether</span>
+	<span class="token comment">// they appear in the text so far, increasing the model's likelihood to talk about new topics.</span>
 	presence_penalty <span class="token operator">?</span><span class="token builtin">f32</span>
 
 	<span class="token comment">// response_format specifies the format of the response, such as plain text or JSON.</span>
 	<span class="token comment">// When null, the default format is used.</span>
 	response_format <span class="token operator">?</span><span class="token builtin">string</span>
 
-	<span class="token comment">// seed sets the random seed for reproducibility.</span>
-	<span class="token comment">// Using the same seed produces consistent results for the same input.</span>
+	<span class="token comment">// If specified, our system will make a best effort to sample deterministically, such that</span>
+	<span class="token comment">// repeated requests with the same `seed` and parameters should return the same result.</span>
+	<span class="token comment">// Determinism is not guaranteed, and you should refer to the `system_fingerprint` response</span>
+	<span class="token comment">// parameter to monitor changes in the backend.</span>
 	seed <span class="token operator">?</span><span class="token builtin">int</span>
 
-	<span class="token comment">// stop defines sequences where the model should stop generating text.</span>
-	<span class="token comment">// This prevents the model from continuing beyond certain keywords or phrases.</span>
+	<span class="token comment">// Up to 4 sequences where the API will stop generating further tokens.</span>
 	stop <span class="token operator">?</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span>
-
-	<span class="token comment">// stream enables or disables response streaming.</span>
-	<span class="token comment">// When true, the response is sent as a stream rather than a complete object.</span>
+<span class="token keyword">pub</span> <span class="token keyword">mut</span><span class="token punctuation">:</span>
+	<span class="token comment">// If set, partial message deltas will be sent. Tokens will be sent as data-only server-sent</span>
+	<span class="token comment">// events as they become available, with the stream terminated by a `data: [DONE]` message.</span>
 	stream <span class="token builtin">bool</span>
 
-	<span class="token comment">// temperature controls the randomness of the response generation.</span>
-	<span class="token comment">// A lower value makes the output more focused, while a higher value makes it more creative.</span>
+	<span class="token comment">// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the</span>
+	<span class="token comment">// output more random, while lower values like 0.2 will make it more focused and deterministic.</span>
 	temperature <span class="token operator">?</span><span class="token builtin">f32</span>
 
-	<span class="token comment">// tool_choice specifies the tool the model should use for generating the response.</span>
-	<span class="token comment">// This allows fine-grained control over the assistant's behavior.</span>
+	<span class="token comment">// A list of tools the model may call. Currently, only functions are supported as a tool. Use</span>
+	<span class="token comment">// this to provide a list of functions the model may generate JSON inputs for. A max of 128</span>
+	<span class="token comment">// functions are supported.</span>
 	tool_choice <span class="token operator">?</span><span class="token builtin">string</span>
+	tools       <span class="token operator">?</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span>
 
-	<span class="token comment">// tools lists the tools available for the model to use.</span>
-	<span class="token comment">// For example, it could include summarization or translation tools.</span>
-	tools <span class="token operator">?</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span>
-
-	<span class="token comment">// top_logprobs sets the number of top tokens to return log probabilities for.</span>
-	<span class="token comment">// This is useful for inspecting token-level probabilities.</span>
+	<span class="token comment">// An integer between 0 and 20 specifying the number of most likely tokens to return at each</span>
+	<span class="token comment">// token position, each with an associated log probability. logprobs must be set to true if</span>
+	<span class="token comment">// this parameter is used.</span>
 	top_logprobs <span class="token operator">?</span><span class="token builtin">int</span>
 
-	<span class="token comment">// top_p enables nucleus sampling, limiting the probability space to the top p percentage.</span>
-	<span class="token comment">// This controls the diversity of the response.</span>
+	<span class="token comment">// An alternative to sampling with temperature, called nucleus sampling, where the model</span>
+	<span class="token comment">// considers the results of the tokens with top_p probability mass. So 0.1 means only the</span>
+	<span class="token comment">// tokens comprising the top 10% probability mass are considered. It is generally recommended</span>
+	<span class="token comment">// to alter this or `temperature` but not both.</span>
 	top_p <span class="token operator">?</span><span class="token builtin">f32</span>
 
-	<span class="token comment">// user identifies the end user of the request.</span>
-	<span class="token comment">// This can be used for analytics or personalization.</span>
+	<span class="token comment">// A unique identifier representing your end-user, which can help xAI to monitor and detect abuse</span>
 	user <span class="token operator">?</span><span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-						<p>ChatCompletionInput represents the input structure for creating a chat completion. It
-							contains various parameters to control the behavior and output of the model.</p>
+						<p>ChatCompletionInput represents the input parameters for a chat completion request. It
+							includes options for customizing the behavior and output of the model.</p>
 
 					</section>
 
@@ -325,16 +406,13 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">ChatCompletionMessage</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
-	<span class="token comment">// role specifies the role of the message sender.</span>
-	<span class="token comment">// Examples include "user", "assistant", or "system".</span>
+	<span class="token comment">// role is the role of the message sender (e.g., "user", "assistant", "system").</span>
 	role <span class="token builtin">string</span>
 
-	<span class="token comment">// content contains the text of the message.</span>
-	<span class="token comment">// This is the actual message exchanged in the conversation.</span>
+	<span class="token comment">// content is the text content of the message.</span>
 	content <span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-						<p>ChatCompletionMessage represents a message exchanged during a chat completion. Each message
-							has a role and its corresponding content.</p>
+						<p>ChatCompletionMessage represents a single message in the chat conversation.</p>
 
 					</section>
 
@@ -345,54 +423,199 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 						<pre class="signature">
 <code><span class="token keyword">struct</span> <span class="token symbol">ChatCompletionResponse</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
-	<span class="token comment">// choices is a list of choices generated by the model.</span>
-	<span class="token comment">// Each choice includes a generated message and its associated metadata.</span>
-	choices <span class="token punctuation">[</span><span class="token punctuation">]</span>Choice
+	<span class="token comment">// choices contains the list of generated messages.</span>
+	choices <span class="token punctuation">[</span><span class="token punctuation">]</span>ChatCompletionChoice
 
-	<span class="token comment">// created is a Unix timestamp indicating when the response was created.</span>
+	<span class="token comment">// created is the Unix timestamp when the response was generated.</span>
 	created <span class="token builtin">i64</span>
 
-	<span class="token comment">// id is a unique identifier for the response.</span>
+	<span class="token comment">// id is the unique identifier for this API response.</span>
 	id <span class="token builtin">string</span>
 
-	<span class="token comment">// model specifies the name of the model used for the chat completion.</span>
+	<span class="token comment">// model specifies the model used for this completion.</span>
 	model <span class="token builtin">string</span>
 
-	<span class="token comment">// object is the type of object represented by this response.</span>
-	<span class="token comment">// Typically, this is "chat.completion".</span>
+	<span class="token comment">// object specifies the type of object returned (e.g., "text_completion").</span>
 	object <span class="token builtin">string</span>
 
-	<span class="token comment">// system_fingerprint is a unique fingerprint for the system handling the request.</span>
+	<span class="token comment">// system_fingerprint provides a system-level tracking identifier.</span>
 	system_fingerprint <span class="token builtin">string</span>
 
-	<span class="token comment">// usage provides details about the token usage for the request and response.</span>
-	usage Usage
+	<span class="token comment">// usage provides details about token usage in the request and response.</span>
+	usage ChatCompletionUsage
 <span class="token punctuation">}</span></code></pre>
-						<p>ChatCompletionResponse represents the response from the chat completion API. It includes the
-							generated choices, metadata, and token usage information.</p>
+						<p>ChatCompletionResponse represents the full response from the chat completion API.</p>
 
 					</section>
 
-					<section id="Choice" class="doc-node">
+					<section id="ChatCompletionUsage" class="doc-node">
 						<div class="title">
-							<h2>struct Choice <a href="#Choice">#</a></h2>
+							<h2>struct ChatCompletionUsage <a href="#ChatCompletionUsage">#</a></h2>
 						</div>
 						<pre class="signature">
-<code><span class="token keyword">struct</span> <span class="token symbol">Choice</span> <span class="token punctuation">{</span>
+<code><span class="token keyword">struct</span> <span class="token symbol">ChatCompletionUsage</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
-	<span class="token comment">// finish_reason indicates why the completion ended.</span>
-	<span class="token comment">// Examples include "stop" (end of generation) or "length" (max tokens reached).</span>
+	<span class="token comment">// completion_tokens is the number of tokens in the generated response.</span>
+	completion_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// prompt_tokens is the number of tokens in the input prompt.</span>
+	prompt_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// total_tokens is the total number of tokens used (prompt + completion).</span>
+	total_tokens <span class="token builtin">int</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>ChatCompletionUsage provides details about token usage for a request and response.</p>
+
+					</section>
+
+					<section id="CompletionChoice" class="doc-node">
+						<div class="title">
+							<h2>struct CompletionChoice <a href="#CompletionChoice">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">CompletionChoice</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// finish_reason indicates why the generation stopped (e.g., "length", "stop").</span>
 	finish_reason <span class="token builtin">string</span>
 
-	<span class="token comment">// index is the position of this choice in the list of completions.</span>
+	<span class="token comment">// index is the position of this choice in the list of returned choices.</span>
 	index <span class="token builtin">int</span>
 
-	<span class="token comment">// message is the generated message for this choice.</span>
-	<span class="token comment">// It contains the content and role of the response.</span>
-	message ChatCompletionMessage
+	<span class="token comment">// text contains the generated text for this completion.</span>
+	text <span class="token builtin">string</span>
 <span class="token punctuation">}</span></code></pre>
-						<p>Choice represents an individual choice or completion generated by the model. It includes
-							information about the generated message and its metadata.</p>
+						<p>CompletionChoice represents an individual generated completion within the response.</p>
+
+					</section>
+
+					<section id="CompletionInput" class="doc-node">
+						<div class="title">
+							<h2>struct CompletionInput <a href="#CompletionInput">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">CompletionInput</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// The prompt to generate completions for.</span>
+	prompt <span class="token builtin">string</span>
+
+	<span class="token comment">// Number between -2.0 and 2.0. Positive values penalize new tokens based on</span>
+	<span class="token comment">// their existing frequency in the text so far, decreasing the model's</span>
+	<span class="token comment">// likelihood to repeat the same line verbatim.</span>
+	frequency_penalty <span class="token operator">?</span><span class="token builtin">f32</span>
+
+	<span class="token comment">// A JSON object that maps tokens (specified by their token ID in the tokenizer)</span>
+	<span class="token comment">// to an associated bias value from -100 to 100. Mathematically, the bias is added</span>
+	<span class="token comment">// to the logits generated by the model prior to sampling. The exact effect will</span>
+	<span class="token comment">// vary per model, but values between -1 and 1 should decrease or increase likelihood</span>
+	<span class="token comment">// of selection; values like -100 or 100 should result in a ban or exclusive selection</span>
+	<span class="token comment">//  of the relevant token.</span>
+	logit_bias <span class="token operator">?</span><span class="token builtin">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">f32</span>
+
+	<span class="token comment">// Whether to return log probabilities of the output tokens or not. If true, returns</span>
+	<span class="token comment">// the log probabilities of each output token returned in the content of message.</span>
+	logprobs <span class="token operator">?</span><span class="token builtin">bool</span>
+
+	<span class="token comment">// The maximum number of tokens that can be generated in the chat completion. This</span>
+	<span class="token comment">// value can be used to control costs for text generated via API.</span>
+	max_tokens <span class="token operator">?</span><span class="token builtin">int</span>
+
+	<span class="token comment">// Specifies the model to be used for the request.</span>
+	model <span class="token builtin">string</span>
+
+	<span class="token comment">// How many chat completion choices to generate for each input message. Note that</span>
+	<span class="token comment">// you will be charged based on the number of generated tokens across all of the</span>
+	<span class="token comment">// choices. Keep n as 1 to minimize costs.</span>
+	n <span class="token operator">?</span><span class="token builtin">int</span>
+
+	<span class="token comment">// Number between -2.0 and 2.0. Positive values penalize new tokens based on whether</span>
+	<span class="token comment">// they appear in the text so far, increasing the model's likelihood to talk about new topics.</span>
+	presence_penalty <span class="token operator">?</span><span class="token builtin">f32</span>
+
+	<span class="token comment">// response_format specifies the format of the response, such as plain text or JSON.</span>
+	<span class="token comment">// When null, the default format is used.</span>
+	response_format <span class="token operator">?</span><span class="token builtin">string</span>
+
+	<span class="token comment">// If specified, our system will make a best effort to sample deterministically, such that</span>
+	<span class="token comment">// repeated requests with the same `seed` and parameters should return the same result.</span>
+	<span class="token comment">// Determinism is not guaranteed, and you should refer to the `system_fingerprint` response</span>
+	<span class="token comment">// parameter to monitor changes in the backend.</span>
+	seed <span class="token operator">?</span><span class="token builtin">int</span>
+
+	<span class="token comment">// Up to 4 sequences where the API will stop generating further tokens.</span>
+	stop <span class="token operator">?</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span>
+<span class="token keyword">pub</span> <span class="token keyword">mut</span><span class="token punctuation">:</span>
+	<span class="token comment">// If set, partial message deltas will be sent. Tokens will be sent as data-only server-sent</span>
+	<span class="token comment">// events as they become available, with the stream terminated by a `data: [DONE]` message.</span>
+	stream <span class="token builtin">bool</span>
+
+	<span class="token comment">// What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the</span>
+	<span class="token comment">// output more random, while lower values like 0.2 will make it more focused and deterministic.</span>
+	temperature <span class="token operator">?</span><span class="token builtin">f32</span>
+
+	<span class="token comment">// An alternative to sampling with temperature, called nucleus sampling, where the model</span>
+	<span class="token comment">// considers the results of the tokens with top_p probability mass. So 0.1 means only the</span>
+	<span class="token comment">// tokens comprising the top 10% probability mass are considered. It is generally recommended</span>
+	<span class="token comment">// to alter this or `temperature` but not both.</span>
+	top_p <span class="token operator">?</span><span class="token builtin">f32</span>
+
+	<span class="token comment">// A unique identifier representing your end-user, which can help xAI to monitor and detect abuse</span>
+	user <span class="token operator">?</span><span class="token builtin">string</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>CompletionInput represents the input parameters for a completion request. It includes options
+							for customizing the behavior and output of the model.</p>
+
+					</section>
+
+					<section id="CompletionResponse" class="doc-node">
+						<div class="title">
+							<h2>struct CompletionResponse <a href="#CompletionResponse">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">CompletionResponse</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// choices contains the list of generated completions.</span>
+	choices <span class="token punctuation">[</span><span class="token punctuation">]</span>CompletionChoice
+
+	<span class="token comment">// created is the Unix timestamp indicating when the response was generated.</span>
+	created <span class="token builtin">i64</span>
+
+	<span class="token comment">// id is a unique identifier for this completion response.</span>
+	id <span class="token builtin">string</span>
+
+	<span class="token comment">// model specifies the model used to generate the completion.</span>
+	model <span class="token builtin">string</span>
+
+	<span class="token comment">// object specifies the type of object returned, typically "text_completion".</span>
+	object <span class="token builtin">string</span>
+
+	<span class="token comment">// system_fingerprint is a server-generated identifier for debugging or tracking.</span>
+	system_fingerprint <span class="token builtin">string</span>
+
+	<span class="token comment">// usage provides token usage details, including prompt and completion token counts.</span>
+	usage CompletionUsage
+<span class="token punctuation">}</span></code></pre>
+						<p>CompletionResponse represents the response from a text completion API call. It includes the
+							generated choices, metadata about the request, and token usage details.</p>
+
+					</section>
+
+					<section id="CompletionUsage" class="doc-node">
+						<div class="title">
+							<h2>struct CompletionUsage <a href="#CompletionUsage">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">CompletionUsage</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// completion_tokens is the number of tokens in the generated completion.</span>
+	completion_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// prompt_tokens is the number of tokens in the input prompt.</span>
+	prompt_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// total_tokens is the total number of tokens processed (prompt + completion).</span>
+	total_tokens <span class="token builtin">int</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>CompletionUsage provides statistics on token usage for a completion request.</p>
 
 					</section>
 
@@ -541,25 +764,231 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 
 					</section>
 
-					<section id="Usage" class="doc-node">
+					<section id="StreamChatCompletionChoice" class="doc-node">
 						<div class="title">
-							<h2>struct Usage <a href="#Usage">#</a></h2>
+							<h2>struct StreamChatCompletionChoice <a href="#StreamChatCompletionChoice">#</a></h2>
 						</div>
 						<pre class="signature">
-<code><span class="token keyword">struct</span> <span class="token symbol">Usage</span> <span class="token punctuation">{</span>
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamChatCompletionChoice</span> <span class="token punctuation">{</span>
 <span class="token keyword">pub</span><span class="token punctuation">:</span>
-	<span class="token comment">// completion_tokens is the number of tokens used in the generated response.</span>
+	<span class="token comment">// index is the position of this choice in the list of streamed choices.</span>
+	index <span class="token builtin">int</span>
+
+	<span class="token comment">// delta contains the incremental message content for this choice.</span>
+	delta StreamChatCompletionDelta
+
+	<span class="token comment">// finish_reason explains why this choice's generation stopped (if applicable).</span>
+	finish_reason <span class="token operator">?</span><span class="token builtin">string</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamChatCompletionChoice represents a single partial completion returned during streaming.
+						</p>
+
+					</section>
+
+					<section id="StreamChatCompletionChunk" class="doc-node">
+						<div class="title">
+							<h2>struct StreamChatCompletionChunk <a href="#StreamChatCompletionChunk">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamChatCompletionChunk</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// id is the unique identifier for this chunk.</span>
+	id <span class="token builtin">string</span>
+
+	<span class="token comment">// object specifies the type of object returned.</span>
+	object <span class="token builtin">string</span>
+
+	<span class="token comment">// created is the Unix timestamp when this chunk was generated.</span>
+	created <span class="token builtin">i64</span>
+
+	<span class="token comment">// choices contains the partial completion choices in this chunk.</span>
+	choices <span class="token punctuation">[</span><span class="token punctuation">]</span>StreamChatCompletionChoice
+
+	<span class="token comment">// usage provides token usage information for this chunk.</span>
+	usage StreamChatCompletionUsage
+
+	<span class="token comment">// system_fingerprint provides a system-level tracking identifier for this chunk.</span>
+	system_fingerprint <span class="token builtin">string</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamChatCompletionChunk represents a single chunk of a streamed response.</p>
+
+					</section>
+
+					<section id="StreamChatCompletionDelta" class="doc-node">
+						<div class="title">
+							<h2>struct StreamChatCompletionDelta <a href="#StreamChatCompletionDelta">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamChatCompletionDelta</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// content is the partial message content for this update.</span>
+	content <span class="token operator">?</span><span class="token builtin">string</span>
+
+	<span class="token comment">// role is the role of the message sender for this update.</span>
+	role <span class="token builtin">string</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamChatCompletionDelta represents an incremental update to a message during streaming.</p>
+
+					</section>
+
+					<section id="StreamChatCompletionPromptTokenDetails" class="doc-node">
+						<div class="title">
+							<h2>struct StreamChatCompletionPromptTokenDetails <a
+									href="#StreamChatCompletionPromptTokenDetails">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamChatCompletionPromptTokenDetails</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// text_tokens is the number of tokens from text inputs.</span>
+	text_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// audio_tokens is the number of tokens from audio inputs.</span>
+	audio_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// image_tokens is the number of tokens from image inputs.</span>
+	image_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// cached_tokens is the number of tokens retrieved from cache.</span>
+	cached_tokens <span class="token builtin">int</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamChatCompletionPromptTokenDetails provides a breakdown of tokens in the input prompt.
+						</p>
+
+					</section>
+
+					<section id="StreamChatCompletionUsage" class="doc-node">
+						<div class="title">
+							<h2>struct StreamChatCompletionUsage <a href="#StreamChatCompletionUsage">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamChatCompletionUsage</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// prompt_tokens is the number of tokens in the input prompt.</span>
+	prompt_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// completion_tokens is the number of tokens generated so far.</span>
 	completion_tokens <span class="token builtin">int</span>
 
+	<span class="token comment">// total_tokens is the total number of tokens used (prompt + completion).</span>
+	total_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// prompt_tokens_details provides a detailed breakdown of the input tokens.</span>
+	prompt_tokens_details StreamChatCompletionPromptTokenDetails
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamChatCompletionUsage provides token usage details for a streaming request.</p>
+
+					</section>
+
+					<section id="StreamCompletionChoice" class="doc-node">
+						<div class="title">
+							<h2>struct StreamCompletionChoice <a href="#StreamCompletionChoice">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamCompletionChoice</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// index is the position of this choice in the list of returned choices.</span>
+	index <span class="token builtin">int</span>
+
+	<span class="token comment">// delta contains newly streamed content or role information for this choice.</span>
+	delta StreamCompletionDelta
+
+	<span class="token comment">// finish_reason is an optional reason indicating why this choice concluded (e.g., "stop").</span>
+	finish_reason <span class="token operator">?</span><span class="token builtin">string</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamCompletionChoice represents an individual choice within a streamed chunk.</p>
+
+					</section>
+
+					<section id="StreamCompletionChunk" class="doc-node">
+						<div class="title">
+							<h2>struct StreamCompletionChunk <a href="#StreamCompletionChunk">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamCompletionChunk</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// id is a unique identifier for this specific chunk of the completion.</span>
+	id <span class="token builtin">string</span>
+
+	<span class="token comment">// object specifies the type of the returned object, typically "completion.chunk".</span>
+	object <span class="token builtin">string</span>
+
+	<span class="token comment">// created is the Unix timestamp (in seconds) indicating when this chunk was generated.</span>
+	created <span class="token builtin">i64</span>
+
+	<span class="token comment">// choices is an array of StreamCompletionChoice objects, each representing a portion of the streamed completion.</span>
+	choices <span class="token punctuation">[</span><span class="token punctuation">]</span>StreamCompletionChoice
+
+	<span class="token comment">// usage contains token usage statistics for this chunk, including prompt and completion tokens.</span>
+	usage StreamCompletionUsage
+
+	<span class="token comment">// system_fingerprint is a server-generated identifier for debugging or reference.</span>
+	system_fingerprint <span class="token builtin">string</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamCompletionChunk represents a single streamed chunk of a completion response.</p>
+
+					</section>
+
+					<section id="StreamCompletionDelta" class="doc-node">
+						<div class="title">
+							<h2>struct StreamCompletionDelta <a href="#StreamCompletionDelta">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamCompletionDelta</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// content is the newly generated text or partial completion content, if any.</span>
+	content <span class="token operator">?</span><span class="token builtin">string</span>
+
+	<span class="token comment">// role is the role associated with this content, such as "assistant" or "system".</span>
+	role <span class="token builtin">string</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamCompletionDelta represents incremental updates to the streamed completion.</p>
+
+					</section>
+
+					<section id="StreamCompletionPromptTokenDetails" class="doc-node">
+						<div class="title">
+							<h2>struct StreamCompletionPromptTokenDetails <a
+									href="#StreamCompletionPromptTokenDetails">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamCompletionPromptTokenDetails</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
+	<span class="token comment">// text_tokens is the number of tokens derived from textual input.</span>
+	text_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// audio_tokens is the number of tokens derived from audio input.</span>
+	audio_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// image_tokens is the number of tokens derived from image input.</span>
+	image_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// cached_tokens is the number of tokens retrieved from cache.</span>
+	cached_tokens <span class="token builtin">int</span>
+<span class="token punctuation">}</span></code></pre>
+						<p>StreamCompletionPromptTokenDetails provides a breakdown of the prompt tokens by type.</p>
+
+					</section>
+
+					<section id="StreamCompletionUsage" class="doc-node">
+						<div class="title">
+							<h2>struct StreamCompletionUsage <a href="#StreamCompletionUsage">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">struct</span> <span class="token symbol">StreamCompletionUsage</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span><span class="token punctuation">:</span>
 	<span class="token comment">// prompt_tokens is the number of tokens used in the input prompt.</span>
 	prompt_tokens <span class="token builtin">int</span>
 
-	<span class="token comment">// total_tokens is the total number of tokens used in the request and response.</span>
-	<span class="token comment">// This is the sum of completion_tokens and prompt_tokens.</span>
+	<span class="token comment">// completion_tokens is the number of tokens generated in this streamed response.</span>
+	completion_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// total_tokens is the total number of tokens processed so far (prompt + completion).</span>
 	total_tokens <span class="token builtin">int</span>
+
+	<span class="token comment">// prompt_tokens_details provides a detailed breakdown of the input tokens by type (e.g., text, audio).</span>
+	prompt_tokens_details StreamCompletionPromptTokenDetails
 <span class="token punctuation">}</span></code></pre>
-						<p>Usage provides details about token usage for a chat completion request. It includes counts
-							for prompt, completion, and total tokens.</p>
+						<p>StreamCompletionUsage contains token usage details for a streamed completion segment.</p>
 
 					</section>
 
@@ -604,29 +1033,28 @@ input <span class="token operator">:=</span> ChatCompletionInput<span class="tok
 						</div>
 						<pre class="signature">
 <code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_chat_completion</span><span class="token punctuation">(</span>input ChatCompletionInput<span class="token punctuation">)</span> <span class="token operator">!</span>ChatCompletionResponse</code></pre>
-						<p>get_chat_completion sends a chat completion request to the X.AI API and retrieves the
-							response.</p>
-						<p>Parameters:- input: A ChatCompletionInput struct containing the messages and model
-							information for the request.</p>
-						<p>Returns:- A ChatCompletionResponse struct containing the generated chat completion and
-							metadata.</p>
+						<p>get_chat_completion sends a chat completion request to the API.</p>
+						<p>Parameters:- input: A ChatCompletionInput instance containing the request parameters.</p>
+						<p>Returns:- A ChatCompletionResponse containing the generated completions.</p>
 						<ul>
-							<li>An error if the request fails or the response cannot be decoded.</li>
+							<li>An error if the request fails or if the response cannot be decoded.</li>
 						</ul>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">messages <span class="token operator">:=</span> <span class="token punctuation">[</span>
-    <span class="token symbol">ChatCompletionMessage</span><span class="token punctuation">{</span>
-        role<span class="token punctuation">:</span> <span class="token string">'user'</span>
-        content<span class="token punctuation">:</span> <span class="token string">'Tell me a joke!'</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">]</span>
-input <span class="token operator">:=</span> ChatCompletionInput<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span>messages<span class="token punctuation">,</span> <span class="token string">'grok-beta'</span><span class="token punctuation">)</span>
-response <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_chat_completion</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Generated Response: </span><span class="token string_interp">$</span>{response<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>message<span class="token punctuation">.</span>content}<span class="token string">'</span><span class="token punctuation">)</span></code></pre>
-						</section>
+					</section>
+
+					<section id="XAIClient.get_completion" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) get_completion <a href="#XAIClient.get_completion">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">get_completion</span><span class="token punctuation">(</span>input CompletionInput<span class="token punctuation">)</span> <span class="token operator">!</span>CompletionResponse</code></pre>
+						<p>get_completion sends a completion request to the API.</p>
+						<p>Parameters:- input: A CompletionInput instance containing the request parameters.</p>
+						<p>Returns:- A CompletionResponse containing the generated completions.</p>
+						<ul>
+							<li>An error if the request fails or if the response cannot be decoded.</li>
+						</ul>
+
 					</section>
 
 					<section id="XAIClient.get_embedding_model" class="doc-node">
@@ -642,12 +1070,6 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<li>An error if the request fails or if the response cannot be decoded.</li>
 						</ul>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">model <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_embedding_model</span><span class="token punctuation">(</span><span class="token string">'model-id'</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Created: $model.created')</code></pre>
-						</section>
 					</section>
 
 					<section id="XAIClient.get_embedding_models" class="doc-node">
@@ -663,14 +1085,6 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<li>An error if the request fails or if the response cannot be decoded.</li>
 						</ul>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">models_response <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_embedding_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token keyword">for</span> model <span class="token keyword">in</span> models_response<span class="token punctuation">.</span><span class="token symbol">models</span> <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Version: $model.version')
-}</code></pre>
-						</section>
 					</section>
 
 					<section id="XAIClient.get_language_model" class="doc-node">
@@ -686,12 +1100,6 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<li>An error if the request fails or if the response cannot be decoded.</li>
 						</ul>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">model <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_language_model</span><span class="token punctuation">(</span><span class="token string">'model-id'</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Created: $model.created')</code></pre>
-						</section>
 					</section>
 
 					<section id="XAIClient.get_language_models" class="doc-node">
@@ -707,14 +1115,6 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<li>An error if the request fails or if the response cannot be decoded.</li>
 						</ul>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">models_response <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_language_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token keyword">for</span> model <span class="token keyword">in</span> models_response<span class="token punctuation">.</span><span class="token symbol">models</span> <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Input Modalities: $model.input_modalities')
-}</code></pre>
-						</section>
 					</section>
 
 					<section id="XAIClient.get_model" class="doc-node">
@@ -730,12 +1130,6 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<li>An error if the request fails or if the response cannot be decoded.</li>
 						</ul>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">model <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_model</span><span class="token punctuation">(</span><span class="token string">'model-id'</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Created: $model.created')</code></pre>
-						</section>
 					</section>
 
 					<section id="XAIClient.get_models" class="doc-node">
@@ -750,14 +1144,46 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<li>An error if the request fails or if the response cannot be decoded.</li>
 						</ul>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">models_response <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">get_models</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">{</span> <span class="token function">panic</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">}</span>
-<span class="token keyword">for</span> model <span class="token keyword">in</span> models_response<span class="token punctuation">.</span><span class="token symbol">models</span> <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'Model ID: </span><span class="token string_interp">$</span>model<span class="token punctuation">.</span>id, Owned By: $model.owned_by')
-}</code></pre>
-						</section>
+					</section>
+
+					<section id="XAIClient.stream_chat_completion" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) stream_chat_completion <a href="#XAIClient.stream_chat_completion">#</a>
+							</h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">stream_chat_completion</span><span class="token punctuation">(</span><span class="token keyword">mut</span> input ChatCompletionInput<span class="token punctuation">,</span> on_message <span class="token keyword">fn</span> <span class="token punctuation">(</span>StreamOnMessageFn<span class="token punctuation">)</span><span class="token punctuation">,</span> on_finish <span class="token keyword">fn</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!</span>http<span class="token punctuation">.</span>Response</code></pre>
+						<p>stream_chat_completion sends a streaming chat completion request to the API.</p>
+						<p>Parameters:- input: A mutable ChatCompletionInput instance containing the request parameters.
+						</p>
+						<ul>
+							<li>on_message: A callback function invoked for each streamed chunk.</li>
+							<li>on_finish: A callback function invoked when streaming finishes.</li>
+						</ul>
+						<p>Returns:- The HTTP response object for the streaming request.</p>
+						<ul>
+							<li>An error if the request fails.</li>
+						</ul>
+
+					</section>
+
+					<section id="XAIClient.stream_completion" class="doc-node">
+						<div class="title">
+							<h2>fn (XAIClient) stream_completion <a href="#XAIClient.stream_completion">#</a></h2>
+						</div>
+						<pre class="signature">
+<code><span class="token keyword">fn</span> <span class="token punctuation">(</span>c XAIClient<span class="token punctuation">)</span> <span class="token function">stream_completion</span><span class="token punctuation">(</span><span class="token keyword">mut</span> input CompletionInput<span class="token punctuation">,</span> on_message <span class="token keyword">fn</span> <span class="token punctuation">(</span>StreamOnMessageFn<span class="token punctuation">)</span><span class="token punctuation">,</span> on_finish <span class="token keyword">fn</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!</span>http<span class="token punctuation">.</span>Response</code></pre>
+						<p>stream_completion sends a streaming completion request to the API.</p>
+						<p>Parameters:- input: A mutable CompletionInput instance containing the request parameters.</p>
+						<ul>
+							<li>on_message: A callback function invoked for each streamed chunk of the completion.</li>
+							<li>on_finish: A callback function invoked when streaming finishes.</li>
+						</ul>
+						<p>Returns:- An HTTP response object for the streaming request.</p>
+						<ul>
+							<li>An error if the request fails.</li>
+						</ul>
+
 					</section>
 
 					<section id="XAIClientParams" class="doc-node">
@@ -780,23 +1206,24 @@ response <span class="token operator">:=</span> client<span class="token punctua
 						<p>XAIClientParams is used to initialize an XAIClient instance. It supports optional
 							customization of the base URL.</p>
 
-						<section class="doc-node examples">
-							<h4>Example</h4>
-							<pre>
-<code class="language-v">client <span class="token operator">:=</span> XAIClient<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token symbol">XAIClientParams</span><span class="token punctuation">{</span>
-    api_key<span class="token punctuation">:</span> <span class="token string">'your_api_key'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-						</section>
 					</section>
 
 
-					<div class="footer">Powered by vdoc. Generated on: 7 Dec 2024 17:56:37</div>
+					<div class="footer">Powered by vdoc. Generated on: 11 Dec 2024 19:02:26</div>
 				</div>
 				<div class="doc-toc">
 					<ul>
 						<li class="open"><a href="#readme_vxai">README</a></li>
 						<li class="open"><a href="#Constants">Constants</a></li>
+						<li class="open"><a href="#get_api_key_from_env">fn get_api_key_from_env</a>
+							<ul>
+							</ul>
+						</li>
 						<li class="open"><a href="#ChatCompletionInput.new">fn ChatCompletionInput.new</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#CompletionInput.new">fn CompletionInput.new</a>
 							<ul>
 							</ul>
 						</li>
@@ -805,6 +1232,10 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							</ul>
 						</li>
 						<li class="open"><a href="#APIKeyInfo">struct APIKeyInfo</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#ChatCompletionChoice">struct ChatCompletionChoice</a>
 							<ul>
 							</ul>
 						</li>
@@ -820,7 +1251,23 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<ul>
 							</ul>
 						</li>
-						<li class="open"><a href="#Choice">struct Choice</a>
+						<li class="open"><a href="#ChatCompletionUsage">struct ChatCompletionUsage</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#CompletionChoice">struct CompletionChoice</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#CompletionInput">struct CompletionInput</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#CompletionResponse">struct CompletionResponse</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#CompletionUsage">struct CompletionUsage</a>
 							<ul>
 							</ul>
 						</li>
@@ -848,7 +1295,45 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<ul>
 							</ul>
 						</li>
-						<li class="open"><a href="#Usage">struct Usage</a>
+						<li class="open"><a href="#StreamChatCompletionChoice">struct StreamChatCompletionChoice</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamChatCompletionChunk">struct StreamChatCompletionChunk</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamChatCompletionDelta">struct StreamChatCompletionDelta</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamChatCompletionPromptTokenDetails">struct
+								StreamChatCompletionPromptTokenDetails</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamChatCompletionUsage">struct StreamChatCompletionUsage</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamCompletionChoice">struct StreamCompletionChoice</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamCompletionChunk">struct StreamCompletionChunk</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamCompletionDelta">struct StreamCompletionDelta</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamCompletionPromptTokenDetails">struct
+								StreamCompletionPromptTokenDetails</a>
+							<ul>
+							</ul>
+						</li>
+						<li class="open"><a href="#StreamCompletionUsage">struct StreamCompletionUsage</a>
 							<ul>
 							</ul>
 						</li>
@@ -856,12 +1341,15 @@ response <span class="token operator">:=</span> client<span class="token punctua
 							<ul>
 								<li><a href="#XAIClient.get_api_key_info">fn get_api_key_info</a></li>
 								<li><a href="#XAIClient.get_chat_completion">fn get_chat_completion</a></li>
+								<li><a href="#XAIClient.get_completion">fn get_completion</a></li>
 								<li><a href="#XAIClient.get_embedding_model">fn get_embedding_model</a></li>
 								<li><a href="#XAIClient.get_embedding_models">fn get_embedding_models</a></li>
 								<li><a href="#XAIClient.get_language_model">fn get_language_model</a></li>
 								<li><a href="#XAIClient.get_language_models">fn get_language_models</a></li>
 								<li><a href="#XAIClient.get_model">fn get_model</a></li>
 								<li><a href="#XAIClient.get_models">fn get_models</a></li>
+								<li><a href="#XAIClient.stream_chat_completion">fn stream_chat_completion</a></li>
+								<li><a href="#XAIClient.stream_completion">fn stream_completion</a></li>
 							</ul>
 						</li>
 						<li class="open"><a href="#XAIClientParams">struct XAIClientParams</a>

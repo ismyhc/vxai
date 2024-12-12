@@ -78,6 +78,8 @@ fn (c XAIClient) post(path string, data string) !http.Response {
 	return req.do()
 }
 
+type StreamOnMessageFn = StreamChatCompletionChunk | StreamCompletionChunk
+
 // stream initiates a streaming POST request to the specified API path with the given JSON data.
 // As the response body arrives, it is incrementally decoded into `StreamChatCompletionChunk` objects.
 // Each chunk is passed to `on_message` for immediate processing, allowing you to handle output in real-time.
@@ -92,7 +94,7 @@ fn (c XAIClient) post(path string, data string) !http.Response {
 // Returns:
 // - An `http.Response` containing metadata of the completed request.
 // - An error if the request fails or if there's an issue during streaming.
-fn (c XAIClient) stream(path string, data string, on_message fn (StreamChatCompletionChunk), on_finish fn ()) !http.Response {
+fn (c XAIClient) stream(path string, data string, on_message fn (StreamOnMessageFn), on_finish fn ()) !http.Response {
 	mut req := http.Request{
 		method:           .post
 		url:              c.base_url + path

@@ -2,6 +2,9 @@ module vxai
 
 import json
 
+// The API path for language models.
+pub const language_model_path = 'language-models'
+
 // LanguageModel represents a specific language model available in the X.AI API.
 // It includes details about the model's ID, creation time, input/output capabilities, and pricing.
 pub struct LanguageModel {
@@ -48,7 +51,7 @@ pub:
 // - A LanguageModelsResponse struct containing a list of all available language models.
 // - An error if the request fails or if the response cannot be decoded.
 pub fn (c XAIClient) get_language_models() !LanguageModelsResponse {
-	res := c.get('language-models') or { return error('Failed to get language models') }
+	res := c.get(vxai.language_model_path) or { return error('Failed to get language models') }
 	return json.decode(LanguageModelsResponse, res.body) or {
 		return error('Failed to decode response')
 	}
@@ -63,6 +66,6 @@ pub fn (c XAIClient) get_language_models() !LanguageModelsResponse {
 // - A LanguageModel struct containing details about the requested model.
 // - An error if the request fails or if the response cannot be decoded.
 pub fn (c XAIClient) get_language_model(id string) !LanguageModel {
-	res := c.get('language-models/' + id) or { return error('Failed to get language model') }
+	res := c.get(vxai.language_model_path + '/' + id) or { return error('Failed to get language model') }
 	return json.decode(LanguageModel, res.body) or { return error('Failed to decode response') }
 }

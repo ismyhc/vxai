@@ -35,7 +35,7 @@ fn test_vxai_chat_completion_stream() {
 		},
 	]
 	mut input := vxai.ChatCompletionInput.new(messages, 'grok-beta')
-	res := client.stream_chat_completion(mut input, fn (message vxai.StreamChatCompletionChunk) {
+	res := client.stream_chat_completion(mut input, fn (message vxai.StreamOnMessageFn) {
 	}, fn () {
 		println('Done')
 	}) or {

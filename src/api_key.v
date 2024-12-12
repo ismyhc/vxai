@@ -3,6 +3,9 @@ module vxai
 import json
 import os
 
+// The API path for api key.
+pub const api_key_path = 'api-key'
+
 // APIKeyInfo represents detailed information about an API key,
 // including its status, associated user, and access controls.
 pub struct APIKeyInfo {
@@ -52,7 +55,7 @@ pub:
 // - An APIKeyInfo struct containing detailed API key information if successful.
 // - An error if the request or JSON decoding fails.
 pub fn (c XAIClient) get_api_key_info() !APIKeyInfo {
-	res := c.get('api-key') or { return error('Failed to get API key info') }
+	res := c.get(vxai.api_key_path) or { return error('Failed to get API key info') }
 	return json.decode(APIKeyInfo, res.body) or { return error('Failed to decode response') }
 }
 

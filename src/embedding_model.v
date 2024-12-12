@@ -2,6 +2,9 @@ module vxai
 
 import json
 
+// The API path for embedding models.
+pub const embedding_model_path = 'embedding-models'
+
 // EmbeddingModel represents a specific embedding model available in the X.AI API.
 // It includes details about the model's ID, creation time, input capabilities, and pricing.
 pub struct EmbeddingModel {
@@ -44,7 +47,7 @@ pub:
 // - An EmbeddingModelsResponse struct containing a list of all available embedding models.
 // - An error if the request fails or if the response cannot be decoded.
 pub fn (c XAIClient) get_embedding_models() !EmbeddingModelsResponse {
-	res := c.get('embedding-models') or { return error('Failed to get embedding models') }
+	res := c.get(vxai.embedding_model_path) or { return error('Failed to get embedding models') }
 	dump(res.body)
 	return json.decode(EmbeddingModelsResponse, res.body) or {
 		return error('Failed to decode response')
@@ -60,6 +63,6 @@ pub fn (c XAIClient) get_embedding_models() !EmbeddingModelsResponse {
 // - An EmbeddingModel struct containing details about the requested model.
 // - An error if the request fails or if the response cannot be decoded.
 pub fn (c XAIClient) get_embedding_model(id string) !EmbeddingModel {
-	res := c.get('embedding-models/' + id) or { return error('Failed to get embedding model') }
+	res := c.get(vxai.embedding_model_path + '/' + id) or { return error('Failed to get embedding model') }
 	return json.decode(EmbeddingModel, res.body) or { return error('Failed to decode response') }
 }

@@ -2,6 +2,9 @@ module vxai
 
 import json
 
+// The API path for models.
+pub const model_path = 'models'
+
 // Model represents a model in the X.AI API.
 // It includes details such as the creation time, ID, ownership, and object type.
 pub struct Model {
@@ -35,7 +38,7 @@ pub:
 // - A ModelsResponse struct containing a list of all available models.
 // - An error if the request fails or if the response cannot be decoded.
 pub fn (c XAIClient) get_models() !ModelsResponse {
-	res := c.get('models') or { return error('Failed to get models') }
+	res := c.get(vxai.model_path) or { return error('Failed to get models') }
 	return json.decode(ModelsResponse, res.body) or { return error('Failed to decode response') }
 }
 
@@ -48,6 +51,6 @@ pub fn (c XAIClient) get_models() !ModelsResponse {
 // - A Model struct containing details about the requested model.
 // - An error if the request fails or if the response cannot be decoded.
 pub fn (c XAIClient) get_model(id string) !Model {
-	res := c.get('models/' + id) or { return error('Failed to get model') }
+	res := c.get(vxai.model_path + '/' + id) or { return error('Failed to get model') }
 	return json.decode(Model, res.body) or { return error('Failed to decode response') }
 }

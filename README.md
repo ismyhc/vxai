@@ -31,12 +31,6 @@ v install
 
 Take a look at the tests and the docs for more information on how to use vxai.
 
-## Todo
-- [ ] Add more tests
-- [ ] Add more documentation
-- [ ] Add more examples
-- [ ] Add streaming support.
-
 ## License
     
 This project is licensed under the MIT License

@@ -28,7 +28,7 @@ pub:
 
 	// base_url is the base URL for API requests.
 	// If not provided, it defaults to `https://api.x.ai/v1/`.
-	base_url string = vxai.base_url
+	base_url string = base_url
 }
 
 // new creates a new instance of the XAIClient using the provided parameters.
@@ -116,7 +116,7 @@ fn (c XAIClient) stream(path string, data string, on_message fn (StreamOnMessage
 
 			on_message(decoded_chunk)
 		}
-		on_finish: fn [on_finish] (request &http.Request, final_size u64) ! {
+		on_finish:        fn [on_finish] (request &http.Request, final_size u64) ! {
 			on_finish()
 		}
 	}

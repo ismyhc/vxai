@@ -4,7 +4,7 @@
 
 ![V Language](https://img.shields.io/badge/language-V-blue.svg)
 
-vxai is a V module that provides support for [xAI API](https://docs.x.ai/api)
+vxai is a V module that provides support for [xAI API](https://docs.x.ai/docs/overview)
 
 ## Features
 
